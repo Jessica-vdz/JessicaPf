@@ -1,0 +1,17 @@
+.AboutMeMain {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.837);
+    display: flex;
+
+}
+
+.AboutSection {
+    width: 40%;
+    height: 80%;
+    padding: 1rem;
+    border: 1rem solid black;
+    box-shadow: inset 2rem 2rem 2rem 0rem gray;
+    background-color: aliceblue;
+    margin: auto;
+}

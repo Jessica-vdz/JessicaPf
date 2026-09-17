@@ -1,4 +1,5 @@
 import { use, useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 import styles from './Projects.module.css'
 
 export function Projects() {
@@ -29,31 +30,39 @@ export function Projects() {
                         <figure className={styles.FilePhoto}>
                             file
                         </figure>
+                        <h2>{item.Name}</h2>
                     </button>
                 ))
             )
         } else {
             return (
                 <section>
+                    <button onClick={() => {backButton()}}> /- </button>
                     <h2>{loadedProject.Name}</h2>
                 </section>
             )
         }
 
     }
+
+    function backButton(){
+        setLoadedProject(null);
+    }
     return (
-        <main>
+        <main className={styles.ProjectsMain}>
             <section className={styles.FileSection}>
                 <div className={styles.FileButtonsContainer}>
-                    <button className={styles.FileButton}> -</button>
-                    <button className={styles.FileButton} id={styles.FileCloseButton}> X </button>
+                    <button className={styles.FileButton}> - </button>
+                    <Link to="/">
+                        <button className={styles.FileButton} id={styles.FileCloseButton}> X </button>
+                    </Link>
                 </div>
                 <section className={styles.FileProjectSection}>
                     <div>
                         <h2 className={styles.FileProjectHeader}>Projects</h2>
                     </div>
                     <article className={styles.FileContainer}>
-                        <LoadProjects/>
+                        <LoadProjects />
                     </article>
                 </section>
             </section>

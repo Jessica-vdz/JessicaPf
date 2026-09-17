@@ -7,6 +7,8 @@ import viteLogo from './assets/vite.svg'
 
 
 import './App.css'
+import { Home } from './views/Home/Home';
+import { AboutMe } from './views/AboutMe/AboutMe';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,17 +16,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <nav>
-          <Link to="/">Games</Link>
-          <Link to="/">About me</Link>
-          <Link to="">BookReviews</Link>
-          <Link to="Projects">Projects</Link>
-          <Link to="/">Gallery</Link>
-        </nav>
-
         <Routes>
-            <Route path="Projects" element={<Projects/>}/>
-            
+          <Route path='/' element={<Home />} />
+          <Route path='/Projects' element={<Projects />} />
+          <Route path='/AboutMe' element={<AboutMe/>}/>
         </Routes>
       </BrowserRouter>
 

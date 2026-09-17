@@ -1,0 +1,66 @@
+main {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(126, 154, 179);
+    display: flex;
+}
+
+.FileButtonsContainer {
+    justify-content: flex-end;
+    display: flex;
+    border-bottom: 1px solid gray;
+    background-color: gray;
+    gap: 2px;
+}
+
+.FileButton {
+    padding: .1rem;
+    width: 2rem;
+    transition: .8s ease-in-out;
+
+}
+
+#FileCloseButton:hover {
+    background-color: red;
+
+}
+
+.FileSection {
+    background-color: rgb(238, 238, 238);
+    border: .5rem solid gray;
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.FileProjectSection {
+    height:100%;  
+    width: 100%;
+    align-self: flex-end;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+}
+
+.FileProjectHeader {
+    border-bottom: .1rem solid gray;
+    background-color: rgba(128, 128, 128, 0.411);
+}
+.FileContainer {
+    background-color: rgb(215, 215, 215);
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.FileContent {
+    width: calc(100% / 4);
+    height: calc(100% / 4);
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 5px 5px gray;
+}

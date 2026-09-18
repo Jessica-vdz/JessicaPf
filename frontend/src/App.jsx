@@ -9,6 +9,7 @@ import viteLogo from './assets/vite.svg'
 import './App.css'
 import { Home } from './views/Home/Home';
 import { AboutMe } from './views/AboutMe/AboutMe';
+import { Books } from './views/Books/Books';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/Projects' element={<Projects />} />
+          <Route path='/Books' element={<Books/>}/>
           <Route path='/AboutMe' element={<AboutMe/>}/>
         </Routes>
       </BrowserRouter>

@@ -9,7 +9,7 @@ export function Home() {
             <Link>
                 <button>Recipes</button>
             </Link>
-            <Link>
+            <Link to={'Books'}>
                 <button>Books</button>
             </Link>
             <Link>

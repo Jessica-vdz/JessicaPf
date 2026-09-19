@@ -1,13 +1,13 @@
 services:
   php:
     image: wodby/php:latest
-    container_name: kvk_php
+    container_name: portfolio_php
     volumes:
       - './:/var/www/html'
 
   nginx:
     image: nginx:latest
-    container_name: kvk_nginx
+    container_name: portfolio_nginx
     ports:
       - "80:80"
     depends_on:
@@ -21,12 +21,12 @@ services:
 
   mariadb:
     image: mariadb:latest
-    container_name: kvk_mariadb
+    container_name: portfolio_mariadb
     restart: always
     ports:
       - "3308:3306"
     environment:
-      MYSQL_DATABASE: kvk_db
+      MYSQL_DATABASE: portfolio_db
       MYSQL_USER: jessica
       MYSQL_PASSWORD: 1234
       MYSQL_ROOT_PASSWORD: 123
@@ -41,7 +41,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin:latest
-    container_name: kvk_phpmyadmin
+    container_name: portfolio_phpmyadmin
     ports:
       - "8805:80"
     depends_on:

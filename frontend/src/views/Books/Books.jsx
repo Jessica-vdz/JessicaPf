@@ -8,7 +8,7 @@ export function Books() {
     const [categoryID, setCategoryID] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost/Portfolio/api/loadCategories.php")
+        fetch("http://localhost/api/loadCategories.php")
             .then(res => res.json())
             .then(data => {
                 setCategory(data);
@@ -19,7 +19,7 @@ export function Books() {
         if (categoryID === null) return;
 
         fetch(
-            `http://localhost/Portfolio/api/loadBooks.php?categoryID=${categoryID}`
+            `http://localhost/api/loadBooks.php?categoryID=${categoryID}`
         )
             .then(res => res.json())
             .then(data => {

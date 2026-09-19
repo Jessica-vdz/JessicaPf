@@ -7,7 +7,7 @@ export function Projects() {
     const [loadedProject, setLoadedProject] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost/Portfolio/api/loadProjects.php")
+        fetch("http://localhost/api/loadProjects.php")
             .then(res => res.json())
             .then(data => {
                 setProjects(data);

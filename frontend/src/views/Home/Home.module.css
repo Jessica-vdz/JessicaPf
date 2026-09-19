@@ -1,41 +1,42 @@
-.MainContent {
+main {
+
+    width: 100vw;
     height: 100vh;
-    width: 90vw;
-    margin: auto;
-    display: flex;
+
 }
 
-.HomeSectionBureau {
-    background: url("../../assets/bureau.png");
-    background-repeat: no-repeat;
-    background-position: left bottom;
-    background-size: 100%, auto;
-    width: 50%;
-    height: auto;
-    background-color: antiquewhite;
+.MainSection {
+
+    height: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+
 }
 
-.HomeSectionCloset {
-    background: url("../../assets/closet.png");
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: 90%, auto;
+.WindowSection {
+
+    height: calc(100%);
+    background-color: #e98f8f;
+    z-index: 0;
+
+}
+
+.BureauSection {
     width: 50%;
 }
 
-.Projects {
-    width: calc(100% / 3);
+.BureauImg {
 
-    height: auto;
-    background-color: aqua;
+    width: 50%;
+    position: absolute;
+    bottom: 1rem;
+    z-index: 0;
 }
-.Computer {
-    background: url("../../assets/Computor.png");
-    background-repeat: no-repeat;
-    background-size: 100%, auto;
-    height: auto;
 
-
+.ComputerImg {
+    z-index: 1;
+    position: relative;
+    width: 40%;
+    left: 30%;
+    bottom: 130%;
 }

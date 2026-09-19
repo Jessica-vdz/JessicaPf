@@ -1,45 +1,27 @@
 import { Link } from "react-router-dom";
 import styles from "../Home/Home.module.css"
-
+import bureau from "../../assets/bureau.png"
+import computer from "../../assets/Computor.png"
+import closet from "../../assets/closet.png"
 export function Home() {
     return (
         <main>
-            <div className={styles.MainContent}>
-                <section className={styles.HomeSectionBureau}>
-                    <Link>
-                        <button>Games</button>
-                    </Link>
-                    <figure className={styles.Projects}>
-                        <Link to={'Projects'}>
-                            <button className={styles.Computer}>
-                                <figure >
-                                    Projects
-                                </figure>
-                            </button>
-                        </Link>
-                    </figure>
-                    <Link to={'AboutMe'}>
-                        <button>About me</button>
-                    </Link>
-                </section>
-
-                <section className={styles.HomeSectionCloset}>
-                    <div>
-                        <Link>
-                            <button>Recipes</button>
-                        </Link>
-                        <Link to={'Books'}>
-                            <button>Books</button>
-                        </Link>
-                        <Link>
-                            <button>Photo Album</button>
-                        </Link>
+            <section className={styles.MainSection}>
+                    <div className={styles.WindowSection}>
+                        windo
                     </div>
-                </section>
-            </div>
-            <div className={styles.Bottom}>
-                Onderkant
-            </div>
+                    <div className={styles.BureauSection}>
+                        <figure>
+                            <img src={bureau} alt="bureau" className={styles.BureauImg} />
+                        </figure>
+                        <Link to={'Projects'}>
+                        <img src={computer} alt="" className={styles.ComputerImg}/>
+                        </Link>
+                </div>
+            </section>
+            <section>
+
+            </section>
         </main>
     )
 }

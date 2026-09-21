@@ -12,7 +12,6 @@ CREATE TABLE
     Me (
         Me_ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
         Name VARCHAR(50) NOT NULL,
-        Age INT (100),
         Location VARCHAR(255) NOT NULL,
         About TEXT,
         Github VARCHAR(255),

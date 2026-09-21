@@ -1,17 +1,80 @@
+@font-face {
+    font-family: "AboutMe";
+    src: url("../../assets/La\ Petite\ Chanteuse.ttf");
+}
+
 .AboutMeMain {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.837);
-    display: flex;
+    background-color: black;
 
 }
 
 .AboutSection {
-    width: 40%;
+    width: 80%;
     height: 80%;
-    padding: 1rem;
-    border: 1rem solid black;
-    box-shadow: inset 2rem 2rem 2rem 0rem gray;
-    background-color: aliceblue;
+    background-color: #fff;
+    border: 2rem solid #ad3b8d;
+    box-shadow: inset 1rem 1rem 2rem black;
     margin: auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.AboutContainer {
+    width: 35%;
+    height: 100%;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.AboutHeader {
+    font-family: "AboutMe";
+    letter-spacing: 1.5px;
+}
+
+.AboutInfo {
+    height: 50%;
+}
+
+
+.AboutLinksA {
+    margin: 1rem;
+
+}
+
+.AboutLinksImg {
+    width: 10%;
+}
+
+.AboutMeImgContainer {
+    width: 60%;
+    background-color: #4493e2;
+    position: relative;
+    border-radius: 2.5rem;
+    padding: 2rem;
+}
+
+.closeButton {
+    height: 5rem;
+    width: auto;
+    border: none;
+    position: absolute;
+    right: 10%;
+    background-color: #4493e2;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.closeButton:hover {
+    background-color: #ad3b8d;
+    transition: .5s ease-in-out;
+
+}
+.closeButtonImg {
+    height: 100%;
 }

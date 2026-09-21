@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 import styles from "../AboutMe/AboutMe.module.css";
-
+import github from "../../assets/github.png";
+import linkedin from "../../assets/linkedin.png";
+import close from "../../assets/close.png"
 export function AboutMe() {
     const [me, setMe] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost/Portfolio/api/loadMe.php")
+        fetch("http://localhost/api/loadMe.php")
             .then(res => res.json())
             .then(data => {
                 setMe(data);
@@ -27,11 +30,24 @@ export function AboutMe() {
                             <p>{item.About}</p>
                         </div>
                         <div className={styles.AboutLinks}>
-                            <p>{item.Github}</p>
-                            <p>{item.Linkedin}</p>
+                            <a href="https://github.com/Jessica-vdz" target="_blank" className={styles.AboutLinksA}>
+                                <img src={github} alt="" className={styles.AboutLinksImg} />
+                            </a>
+                            <a href="" target="_blank" className={styles.AboutLinksA}>
+                                <img src={linkedin} alt="" className={styles.AboutLinksImg} />
+                            </a>
                         </div>
                     </article>
                 ))}
+                <article className={styles.AboutMeImgContainer}>
+                    <p className={styles.AboutMeImg}>h</p>
+                </article>
+                <button className={styles.closeButton}>
+                    <Link to="/">
+                    <img src={close} alt="" className={styles.closeButtonImg}/>
+                    </Link>
+                </button>
+
             </section>
         </main>
     )

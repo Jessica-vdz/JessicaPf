@@ -5,7 +5,7 @@ export function Books() {
     const [books, setBooks] = useState([]);
     const [info, setInfo] = useState(null);
     const [category, setCategory] = useState([]);
-    const [categoryID, setCategoryID] = useState(null);
+    const [categoryID, setCategoryID] = useState(0);
 
     useEffect(() => {
         fetch("http://localhost/api/loadCategories.php")
@@ -30,11 +30,10 @@ export function Books() {
     function HandleInfo() {
         if (info != null) {
             return (
-                <article>
+                <article className={styles.BookInfo}>
                     <button onClick={() => setInfo(null)}>x</button>
-
                     <div>
-                        <h1>{info.Title}</h1>
+                        <h3>{info.Title}</h3>
                         <h3>{info.Author}</h3>
                         <p>{info.Description}</p>
                     </div>
@@ -44,30 +43,30 @@ export function Books() {
     }
 
     return (
-        <main>
-            <section>
-                {category.map((item) => (
-                    <article key={item.Id}>
-                        <button
-                            onClick={() =>  setCategoryID(item.Id)}
-                        >
-                            {item.Name}
-                        </button>
+        <main className={styles.BookMain}>
+            <section className={styles.Shelf}>
+                    <article className={styles.CategoryContainer}>
+                        {category.map((item) => (
+                            <button
+                                key={item.Id}
+                                onClick={() => setCategoryID(item.Id)} className={styles.CategoryItem}
+                            >
+                                {item.Name}
+                            </button>
+                        ))}
                     </article>
-                ))}
-            </section>
-
-            <section>
-                {books.map((item) => (
-                    <button
-                        key={item.Books_ID}
-                        onClick={() => setInfo(item)}
-                    >
-                        <h3>{item.Title}</h3>
-                        <p>{item.Author}</p>
-                    </button>
-                ))}
-
+                <div className={styles.BookContent}>
+                    {books.map((item) => (
+                        <button
+                            key={item.Books_ID}
+                            onClick={() => setInfo(item)}
+                            className={styles.Book}
+                        >
+                            <h3>{item.Title}</h3>
+                            <p>{item.Author}</p>
+                        </button>
+                    ))}
+                </div>
                 <HandleInfo />
             </section>
         </main>

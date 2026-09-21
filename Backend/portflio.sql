@@ -29,6 +29,7 @@ CREATE TABLE
         Books_ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
         Title VARCHAR(255) NOT NULL,
         Author VARCHAR(255),
+        Rating INT(5),
         Description TEXT,
         Link VARCHAR(255),
         Category_ID INT,

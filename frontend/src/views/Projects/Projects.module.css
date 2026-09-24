@@ -66,3 +66,35 @@
     justify-content: space-between;
     box-shadow: 5px 5px gray;
 }
+.LoadedProject {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap :2rem;
+}
+
+.LoadedProjectsHeader {
+    display: flex;
+    gap :2rem;
+}
+.LoadProjectsDescription {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.loadedProjectContent {
+    width:90%;
+    height: 80%;
+    margin  :auto;
+}
+.backButton {
+    width:10%;
+}
+.ProjectImg {
+    height: 100px;
+    width: 100px;
+    background-color: antiquewhite;
+}

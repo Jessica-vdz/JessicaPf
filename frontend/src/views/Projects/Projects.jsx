@@ -36,16 +36,27 @@ export function Projects() {
             )
         } else {
             return (
-                <section>
-                    <button onClick={() => {backButton()}}> /- </button>
-                    <h2>{loadedProject.Name}</h2>
+                <section className={styles.LoadedProject}>
+                    <div className={styles.LoadedProjectsHeader}>
+                        <button onClick={() => { backButton() }} className={styles.backButton}> /- </button>
+                        <h2>{loadedProject.Name}</h2>
+                    </div>
+                    <div className={styles.loadedProjectContent}>
+                        <aside className={styles.LoadProjectsDescription}>
+                            <p>{loadedProject.Description}</p>
+                            <p>{loadedProject.GitLink}</p>
+                        </aside>
+                        <figure className={styles.ProjectImg}>
+                            <img src="" alt="" />
+                        </figure>
+                    </div>
                 </section>
             )
         }
 
     }
 
-    function backButton(){
+    function backButton() {
         setLoadedProject(null);
     }
     return (

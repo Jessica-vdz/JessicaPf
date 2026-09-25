@@ -38,6 +38,7 @@ export function Projects() {
             )
         } else {
             return (
+<<<<<<< HEAD
                 <section className={styles.Project}>
                     <div className={styles.Header}>
                         <button onClick={() => { backButton() }} className={styles.BackButton}>
@@ -46,6 +47,22 @@ export function Projects() {
                         <h2>{loadedProject.Name}</h2>
                     </div>
 
+=======
+                <section className={styles.LoadedProject}>
+                    <div className={styles.LoadedProjectsHeader}>
+                        <button onClick={() => { backButton() }} className={styles.backButton}> /- </button>
+                        <h2>{loadedProject.Name}</h2>
+                    </div>
+                    <div className={styles.loadedProjectContent}>
+                        <aside className={styles.LoadProjectsDescription}>
+                            <p>{loadedProject.Description}</p>
+                            <p>{loadedProject.GitLink}</p>
+                        </aside>
+                        <figure className={styles.ProjectImg}>
+                            <img src="" alt="" />
+                        </figure>
+                    </div>
+>>>>>>> b294d715547509ea2604a5781f826b2491484370
                 </section>
             )
         }

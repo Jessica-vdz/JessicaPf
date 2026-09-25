@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "../Home/Home.module.css"
 import bureau from "../../assets/bureau.png"
 import computer from "../../assets/Computor.png"
-import game from "../../assets/Game.png"
+import game from "../../assets/game.png"
 import closet from "../../assets/closet.png"
 import books from "../../assets/books.png"
 import cooking from "../../assets/cooking.png"

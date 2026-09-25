@@ -42,9 +42,12 @@
     align-self: flex-end;
     font-family: 'Courier New', Courier, monospace;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .FileProjectHeader {
+
     border-bottom: .1rem solid gray;
     background-color: rgba(128, 128, 128, 0.411);
 }
@@ -55,14 +58,67 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+
+}
+
+.FilePhoto {
+    height: 100%;
+    width: fit-content;
+
+}
+
+.FilePhotoImg:hover {
+    box-shadow: 1rem 1rem 5rem  rgb(74, 74, 74);
+
+}
+
+.FilePhotoImg {
+    height: 100%;
+    transition: .5s ease;
+
 }
 
 .FileContent {
-    width: calc(100% / 4);
+    width: fit-content;
     height: calc(100% / 4);
     margin: 1rem;
     display: flex;
+    gap: 1rem;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 5px 5px gray;
+    background-color: transparent;
+    border: none;
+    border-radius: 1.4rem;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+.Project {
+    margin: 1rem;
+    width: 100%;
+    height: 100%;
+    align-self: flex-end;
+}
+
+.Header {
+    display: flex;
+    gap: 2rem;
+}
+
+.BackButton {
+    width: 5%;
+    height: auto;
+    padding: .5rem;
+    background-color: transparent;
+    border: none;
+    transition: .5s ease;
+}
+
+.BackButton:hover{
+    background-color: rgb(162, 162, 162);
+    border-radius: 1.4rem;
+}
+
+.BackImg {
+    width: 100%;
 }

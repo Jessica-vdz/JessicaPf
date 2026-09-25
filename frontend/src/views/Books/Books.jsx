@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "../Books/Books.module.css";
 import book from "../../assets/book.png";
 import shelfEnd from "../../assets/shelfEnd.png"
+import back from "../../assets/back.png";
 import close from "../../assets/close.png";
 
 export function Books() {
@@ -42,7 +43,7 @@ export function Books() {
                             </button>
                             <h1 className={styles.font}>{info.Title}</h1>
                         </div>
-                        
+
                         <div className={styles.Rating}>
                             <h2 className={styles.font}>Rating</h2>
                             <h3 className={styles.font}>{info.Author}</h3>
@@ -62,11 +63,7 @@ export function Books() {
             <section className={styles.Shelf}>
                 <article className={styles.CategoryContainer}>
                     <div className={styles.CategoryHeader}>
-                        <Link to={"/"}>
-                            <button>Leave</button>
-                        </Link>
                         <h2 className={styles.font}>Category</h2>
-
                     </div>
 
 
@@ -101,7 +98,13 @@ export function Books() {
                     <div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla facilis blanditiis veritatis eius rerum pariatur quia quidem libero adipisci quam, alias perferendis, beatae veniam et architecto reiciendis aperiam, suscipit ea.</p>
                     </div>
+                    <Link to={"/"}>
+                        <button className={styles.BackButton}>
+                            <img src={back} alt="" className={styles.BackImg} />
+                        </button>
+                    </Link>
                 </article>
+
                 <HandleInfo />
             </section>
         </main>

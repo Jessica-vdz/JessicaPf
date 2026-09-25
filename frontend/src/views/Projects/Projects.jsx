@@ -1,5 +1,7 @@
 import { use, useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+import back from "../../assets/back.png";
+import file from "../../assets/file.png"
 import styles from './Projects.module.css'
 
 export function Projects() {
@@ -28,24 +30,29 @@ export function Projects() {
                 projects.map((item) => (
                     <button key={item.Project_ID} className={styles.FileContent} onClick={() => handleProjectClick(item)}>
                         <figure className={styles.FilePhoto}>
-                            file
+                            <img src={file} alt="" className={styles.FilePhotoImg} />
                         </figure>
-                        <h2>{item.Name}</h2>
+                        <h3>{item.Name}</h3>
                     </button>
                 ))
             )
         } else {
             return (
-                <section>
-                    <button onClick={() => {backButton()}}> /- </button>
-                    <h2>{loadedProject.Name}</h2>
+                <section className={styles.Project}>
+                    <div className={styles.Header}>
+                        <button onClick={() => { backButton() }} className={styles.BackButton}>
+                            <img src={back} alt="" className={styles.BackImg}/>
+                        </button>
+                        <h2>{loadedProject.Name}</h2>
+                    </div>
+
                 </section>
             )
         }
 
     }
 
-    function backButton(){
+    function backButton() {
         setLoadedProject(null);
     }
     return (

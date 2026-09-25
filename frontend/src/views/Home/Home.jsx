@@ -12,7 +12,7 @@ export function Home() {
         <main>
             <section className={styles.MainSection}>
                 <div className={styles.WindowSection}>
-                    windo
+                    
                 </div>
                 <div className={styles.DeskSection}>
                     <figure>

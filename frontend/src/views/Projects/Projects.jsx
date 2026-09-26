@@ -1,12 +1,16 @@
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import back from "../../assets/back.png";
-import file from "../../assets/file.png"
-import styles from './Projects.module.css'
+import Blog from "../../assets/back.png";
+import file from "../../assets/file.png";
+import styles from "./Projects.module.css";
 
 export function Projects() {
     const [projects, setProjects] = useState([]);
     const [loadedProject, setLoadedProject] = useState(null);
+
+    const images = {
+        Blog: Blog,
+    };
 
     useEffect(() => {
         fetch("http://localhost/api/loadProjects.php")
@@ -16,7 +20,7 @@ export function Projects() {
             })
             .catch(err => {
                 console.log(err);
-            })
+            });
     }, []);
 
     function handleProjectClick(item) {
@@ -24,72 +28,89 @@ export function Projects() {
         console.log(item);
     }
 
-    function LoadProjects(item) {
+    function LoadProjects() {
         if (loadedProject == null) {
-            return (
-                projects.map((item) => (
-                    <button key={item.Project_ID} className={styles.FileContent} onClick={() => handleProjectClick(item)}>
-                        <figure className={styles.FilePhoto}>
-                            <img src={file} alt="" className={styles.FilePhotoImg} />
-                        </figure>
-                        <h3>{item.Name}</h3>
-                    </button>
-                ))
-            )
-        } else {
-            return (
-<<<<<<< HEAD
-                <section className={styles.Project}>
-                    <div className={styles.Header}>
-                        <button onClick={() => { backButton() }} className={styles.BackButton}>
-                            <img src={back} alt="" className={styles.BackImg}/>
-                        </button>
-                        <h2>{loadedProject.Name}</h2>
-                    </div>
+            return projects.map((item) => (
+                <button
+                    key={item.Project_ID}
+                    className={styles.FileContent}
+                    onClick={() => handleProjectClick(item)}
+                >
+                    <figure className={styles.FilePhoto}>
+                        <img
+                            src={file}
+                            alt=""
+                            className={styles.FilePhotoImg}
+                        />
+                    </figure>
 
-=======
-                <section className={styles.LoadedProject}>
-                    <div className={styles.LoadedProjectsHeader}>
-                        <button onClick={() => { backButton() }} className={styles.backButton}> /- </button>
-                        <h2>{loadedProject.Name}</h2>
-                    </div>
-                    <div className={styles.loadedProjectContent}>
-                        <aside className={styles.LoadProjectsDescription}>
-                            <p>{loadedProject.Description}</p>
-                            <p>{loadedProject.GitLink}</p>
-                        </aside>
-                        <figure className={styles.ProjectImg}>
-                            <img src="" alt="" />
-                        </figure>
-                    </div>
->>>>>>> b294d715547509ea2604a5781f826b2491484370
-                </section>
-            )
+                    <h3>{item.Name}</h3>
+                </button>
+            ));
         }
 
+        return (
+            <section className={styles.LoadedProject}>
+                <div className={styles.LoadedProjectsHeader}>
+                    <button
+                        onClick={backButton}
+                        className={styles.backButton}
+                    >
+                        <img src="" alt="" />
+                    </button>
+
+                    <h2>{loadedProject.Name}</h2>
+                </div>
+
+                <div className={styles.loadedProjectContent}>
+                    <aside className={styles.LoadProjectsDescription}>
+                        <p>{loadedProject.Description}</p>
+                        <p>{loadedProject.GitLink}</p>
+                    </aside>
+
+                    <figure className={styles.ProjectImg}>
+                        <img
+                            src={images[loadedProject.ProjectImg]}
+                            alt={loadedProject.Name}
+                        />
+                    </figure>
+                </div>
+            </section>
+        );
     }
 
     function backButton() {
         setLoadedProject(null);
     }
+
     return (
         <main className={styles.ProjectsMain}>
             <section className={styles.FileSection}>
                 <div className={styles.FileButtonsContainer}>
-                    <button className={styles.FileButton}> - </button>
+                    <button className={styles.FileButton}>-</button>
+
                     <Link to="/">
-                        <button className={styles.FileButton} id={styles.FileCloseButton}> X </button>
+                        <button
+                            className={styles.FileButton}
+                            id={styles.FileCloseButton}
+                        >
+                            X
+                        </button>
                     </Link>
                 </div>
+
                 <section className={styles.FileProjectSection}>
                     <div>
-                        <h2 className={styles.FileProjectHeader}>Projects</h2>
+                        <h2 className={styles.FileProjectHeader}>
+                            Projects
+                        </h2>
                     </div>
+
                     <article className={styles.FileContainer}>
                         <LoadProjects />
                     </article>
                 </section>
             </section>
         </main>
-    )
+    );
 }

@@ -10,7 +10,6 @@ import './App.css'
 import { Home } from './views/Home/Home';
 import { AboutMe } from './views/AboutMe/AboutMe';
 import { Books } from './views/Books/Books';
-import Game from './views/Game/Game';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,7 +22,6 @@ function App() {
           <Route path='/Projects' element={<Projects />} />
           <Route path='/Books' element={<Books/>}/>
           <Route path='/AboutMe' element={<AboutMe/>}/>
-          <Route path='/Game' element= {<Game/>}/>
         </Routes>
       </BrowserRouter>
 

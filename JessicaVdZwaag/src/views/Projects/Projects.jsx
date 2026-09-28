@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import blog from "../../assets/blog.png";
 import back from "../../assets/back.png";
 import file from "../../assets/file.png";
+import betterhome from "../../assets/betterhome.png"
 import styles from "./Projects.module.css";
 
 export function Projects() {
@@ -11,6 +12,7 @@ export function Projects() {
 
     const images = {
         blog: blog,
+        betterhome: betterhome
     };
 
     useEffect(() => {
@@ -26,7 +28,6 @@ export function Projects() {
 
     function handleProjectClick(item) {
         setLoadedProject(item);
-        console.log(item);
     }
 
     function LoadProjects() {
@@ -61,7 +62,11 @@ export function Projects() {
                 <div className={styles.loadedProjectContent}>
                     <aside className={styles.LoadProjectsDescription}>
                         <p>{loadedProject.Description}</p>
-                        <a href={loadedProject.GitLink} target="_blank" className={styles.GitImg}>{loadedProject.GitLink}</a>
+                        <div className={styles.Links}>
+                            <a href={loadedProject.GitLink} target="_blank" className={styles.GitImg}>{loadedProject.GitLink}</a>
+                            <a href={loadedProject.ProjectLink} target="_blank" className={styles.GitImg}>{loadedProject.ProjectLink}</a>
+
+                        </div>
                     </aside>
                     <figure className={styles.ProjectImgContainer}>
                         <img

@@ -175,6 +175,13 @@
     height: 100%;
     gap: 1.5rem;
     line-height: 1.7;
+    width: 50vw;
+}
+
+.Links {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .ProjectImgContainer {
@@ -243,30 +250,174 @@
     color: #000;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
+
+    .ProjectsMain {
+        min-height: 100dvh;
+
+        padding: 0.75rem;
+
+        box-sizing: border-box;
+
+        align-items: center;
+    }
 
     .FileSection {
-        width: 95vw;
-        height: 95vh;
+        width: 100%;
+        height: 94dvh;
+
+        border-width: 3px;
+
+        box-shadow:
+            5px 5px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .FileButtonsContainer {
+        min-height: 38px;
+
+        gap: 3px;
+    }
+
+    .FileButton {
+        width: 2.2rem;
+        height: 2rem;
+
+        font-size: 0.9rem;
+    }
+
+    .FileProjectHeader {
+        padding: 0.6rem 0.8rem;
+
+        font-size: 1rem;
+    }
+
+    .FileContainer {
+        display: grid;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 1rem;
+
+        padding: 1rem;
+
+        overflow-y: auto;
+    }
+
+    .FileContent {
+        width: 100%;
+        min-height: 160px;
+
+        padding: 0.75rem;
+
+        gap: 0.7rem;
+
+        box-shadow:
+            4px 4px gray;
+    }
+
+    .FileContent:hover {
+        transform: none;
+
+        box-shadow:
+            4px 4px gray;
+    }
+
+    .FilePhoto {
+        width: 100%;
+        height: 90px;
+    }
+
+
+    .FilePhotoImg {
+        object-fit: cover;
     }
 
     .LoadedProject {
+        width: 100%;
+        height: 100%;
+
         padding: 1rem;
+
+        gap: 1rem;
+
+        overflow-y: auto;
+    }
+
+    .LoadedProjectsHeader {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+
+        gap: 1rem;
+
+        padding-bottom: 0.75rem;
+    }
+
+    .LoadedProjectsHeader h2 {
+        margin: 0;
+
+        font-size: 1.2rem;
+
+        word-break: break-word;
     }
 
     .loadedProjectContent {
+        width: 100%;
+
+        display: flex;
         flex-direction: column;
+
         align-items: stretch;
+
+        gap: 1.5rem;
+
+        flex: none;
     }
+
 
     .LoadProjectsDescription {
         width: 100%;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 1rem;
+
+        line-height: 1.6;
+
+        font-size: 0.9rem;
     }
 
     .ProjectImgContainer {
         width: 100%;
+
         max-width: none;
 
         flex: none;
+
+        aspect-ratio: 16 / 10;
+
+        margin: 0;
+
+        box-shadow:
+            5px 5px gray;
+    }
+
+    .backButton {
+        padding: 0.55rem 0.8rem;
+
+        box-shadow:
+            3px 3px 0 #666666;
+    }
+
+    .backImg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .GitImg {
+        font-size: 1.3rem;
     }
 }

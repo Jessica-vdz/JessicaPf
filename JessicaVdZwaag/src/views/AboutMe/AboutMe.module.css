@@ -146,51 +146,209 @@
     object-fit: contain;
 }
 
+/* =========================
+   ABOUT ME - MOBILE
+========================= */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 
     .AboutMeMain {
-        padding: 2rem 1rem;
+        width: 100%;
+        min-height: 100dvh;
+        height: auto;
+
+        padding: 0.5rem;
+
+        display: block;
+
+        overflow-x: hidden;
+        overflow-y: auto;
     }
+
+
+    /* CONTAINER */
 
     .AboutSection {
         width: 100%;
+        max-width: 100%;
+
+        height: auto;
+        min-height: 0;
+
+        display: flex;
         flex-direction: column;
-        padding: 1rem;
-        border-radius: 1.5rem;
+
+        gap: 0.5rem;
+
+        padding: 0.5rem;
+
+        border: 0.25rem solid #752727;
+        border-radius: 0.7rem;
+
+        box-sizing: border-box;
     }
+
+
+    /* TEXT */
 
     .AboutContainer {
-        padding: 1.5rem;
+        width: 100%;
+
+        height: auto;
+        min-height: 0;
+
+        flex: none;
+
+        padding: 0.5rem;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: flex-start;
+
+        gap: 0.6rem;
+
+        box-sizing: border-box;
     }
+
 
     .AboutHeader {
-        font-size: 3.5rem;
+        margin: 0;
+
+        font-size: 2.4rem;
+
+        line-height: 0.9;
     }
 
+
+    .AboutInfo {
+        width: 100%;
+        max-width: none;
+
+        height: auto;
+        min-height: 0;
+
+        font-size: 1.3rem;
+        line-height: 1.5;
+    }
+
+
+    /* LINKS */
+
+    .AboutLinks {
+        display: flex;
+
+        gap: 0.4rem;
+
+        margin: 0;
+    }
+
+
+    .AboutLinksA {
+        width: 2.3rem;
+        height: 2.3rem;
+
+        flex-shrink: 0;
+
+        border-radius: 0.4rem;
+    }
+
+
+    .AboutLinksImg {
+        width: 45%;
+        height: 45%;
+    }
+
+
+    /* IMAGE */
+
     .AboutMeImgContainer {
-        min-height: 350px;
+        width: 100%;
+
+        height: 150px;
+        min-height: 0;
+
+        flex: none;
+
+        padding: 0.3rem;
+
+        box-sizing: border-box;
+
+        border-radius: 0.5rem;
+    }
+
+
+    /* CLOSE BUTTON */
+
+    .closeButton {
+        position: absolute;
+
+        top: 0.3rem;
+        right: 0.3rem;
+
+        width: 2rem;
+        height: 2rem;
+
+        padding: 0;
+    }
+
+
+    .closeButtonImg {
+        width: 50%;
+        height: 50%;
     }
 }
 
 
-@media (max-width: 500px) {
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+    .AboutMeMain {
+        padding: 0.25rem;
+    }
+
+
+    .AboutSection {
+        padding: 0.3rem;
+
+        border-width: 0.2rem;
+    }
+
+
+    .AboutContainer {
+        padding: 0.4rem;
+
+        gap: 0.5rem;
+    }
+
 
     .AboutHeader {
-        font-size: 3rem;
+        font-size: 2.2rem;
     }
+
 
     .AboutInfo {
-        font-size: 0.95rem;
-        line-height: 1.7;
+        font-size: 1.2rem;
+        line-height: 1.45;
     }
 
-    .AboutLinks {
-        gap: 0.7rem;
+
+    .AboutMeImgContainer {
+        height: 120px;
     }
+
 
     .AboutLinksA {
-        width: 3rem;
-        height: 3rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+
+    .closeButton {
+        width: 1.8rem;
+        height: 1.8rem;
     }
 }

@@ -21,7 +21,7 @@ export function Home() {
                     <Link to={'Projects'}>
                         <img src={computer} alt="" className={styles.ComputerImg} />
                     </Link>
-                    <Link to={'Game'}>
+                    <Link>
                         <img src={game} alt="" className={styles.GameImg} />
                     </Link>
                 </div>

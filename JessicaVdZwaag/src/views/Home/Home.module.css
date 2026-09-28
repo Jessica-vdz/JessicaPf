@@ -98,4 +98,62 @@ main {
     bottom: 40%;
     width: 20%;
     right: 13%;
+}@media (max-width: 700px) and (orientation: portrait) {
+
+    main {
+        position: relative;
+        overflow: hidden;
+    }
+
+    main::before {
+        content: "↻";
+
+        position: fixed;
+        inset: 0;
+
+        z-index: 9999;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding-bottom: 7rem;
+        box-sizing: border-box;
+
+        background:
+            radial-gradient(
+                circle at center,
+                #2b3038 0%,
+                #15171c 75%
+            );
+
+        color: #cadbe5;
+
+        font-size: 5rem;
+    }
+
+    main::after {
+        content: "Draai je scherm";
+
+        position: fixed;
+
+        top: 58%;
+        left: 0;
+        right: 0;
+
+        z-index: 10000;
+
+        color: white;
+
+        text-align: center;
+
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+
+        font-size: 1.3rem;
+
+        letter-spacing: 0.1rem;
+    }
 }

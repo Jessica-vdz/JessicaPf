@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Blog from "../../assets/back.png";
+import blog from "../../assets/blog.png";
+import back from "../../assets/back.png";
 import file from "../../assets/file.png";
 import styles from "./Projects.module.css";
 
@@ -9,7 +10,7 @@ export function Projects() {
     const [loadedProject, setLoadedProject] = useState(null);
 
     const images = {
-        Blog: Blog,
+        blog: blog,
     };
 
     useEffect(() => {
@@ -52,26 +53,21 @@ export function Projects() {
         return (
             <section className={styles.LoadedProject}>
                 <div className={styles.LoadedProjectsHeader}>
-                    <button
-                        onClick={backButton}
-                        className={styles.backButton}
-                    >
-                        <img src="" alt="" />
+                    <button onClick={backButton} className={styles.backButton}>
+                        <img src={back} alt="" className={styles.backImg} />
                     </button>
-
                     <h2>{loadedProject.Name}</h2>
                 </div>
-
                 <div className={styles.loadedProjectContent}>
                     <aside className={styles.LoadProjectsDescription}>
                         <p>{loadedProject.Description}</p>
-                        <p>{loadedProject.GitLink}</p>
+                        <a href={loadedProject.GitLink} target="_blank" className={styles.GitImg}>{loadedProject.GitLink}</a>
                     </aside>
-
-                    <figure className={styles.ProjectImg}>
+                    <figure className={styles.ProjectImgContainer}>
                         <img
                             src={images[loadedProject.ProjectImg]}
                             alt={loadedProject.Name}
+                            className={styles.ProjectImg}
                         />
                     </figure>
                 </div>

@@ -4,7 +4,6 @@ CREATE TABLE
         Name VARCHAR(255) NOT NULL,
         Description VARCHAR(8000) NOT NULL,
         GitLink VARCHAR(255) NOT NULL,
-        Languages VARCHAR(255) NOT NULL,
         ProjectLink VARCHAR(255),
         ProjectImg VARCHAR(255)
     );

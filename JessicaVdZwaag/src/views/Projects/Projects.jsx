@@ -14,7 +14,7 @@ export function Projects() {
     };
 
     useEffect(() => {
-        fetch("http://localhost/api/loadProjects.php")
+        fetch("/php/api/loadProjects.php")
             .then(res => res.json())
             .then(data => {
                 setProjects(data);

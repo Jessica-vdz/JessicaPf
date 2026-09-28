@@ -8,7 +8,7 @@ export function AboutMe() {
     const [me, setMe] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost/api/loadMe.php")
+        fetch("/php/api/loadMe.php")
             .then(res => res.json())
             .then(data => {
                 setMe(data);

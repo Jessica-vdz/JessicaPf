@@ -13,7 +13,7 @@ export function Books() {
     const [categoryID, setCategoryID] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost/api/loadCategories.php")
+        fetch("/php/api/loadCategories.php")
             .then(res => res.json())
             .then(data => {
                 setCategory(data);

@@ -4,6 +4,7 @@ main {
     height: 100vh;
     display: flex;
     align-items: flex-end;
+    background-color: #282726ba ;
 
 }
 

@@ -43,7 +43,9 @@
 
 .AboutHeader {
     margin: 0 0 1.5rem;
-    font-family: Arial, sans-serif;
+    font-family: "AboutMe", cursive;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: normal;
     line-height: 0.9;
     letter-spacing: 2px;
     color: rgb(32, 31, 31);
@@ -113,7 +115,7 @@
 }
 
 .closeButton {
-
+    
     top: 1rem;
     right: 1rem;
     width: 3.5rem;

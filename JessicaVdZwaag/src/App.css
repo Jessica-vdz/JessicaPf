@@ -1,0 +1,26 @@
+.menu {
+    position: absolute;
+    background-color: aliceblue;
+    right: 0;
+    margin: 2rem;
+    z-index: 15;
+    display: flex;
+    gap:1rem;
+    padding: 1rem;
+    border-radius: 1.4rem;
+}
+
+.navContent {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.navItem {
+    color: #000;
+    text-decoration: none;
+}
+.menuButton {
+    height: fit-content;
+    padding: .5rem;
+}

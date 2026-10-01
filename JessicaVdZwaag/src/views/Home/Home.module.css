@@ -98,7 +98,10 @@ main {
     bottom: 40%;
     width: 20%;
     right: 13%;
-}@media (max-width: 700px) and (orientation: portrait) {
+}
+
+
+@media (max-width: 700px) and (orientation: portrait) {
 
     main {
         position: relative;

@@ -146,11 +146,32 @@
     object-fit: contain;
 }
 
-/* =========================
-   ABOUT ME - MOBILE
-========================= */
+.skillsContainer {
+    width: 90%;
+    padding: 1rem;
+    border: .5rem solid black;
+    border-radius: 1rem;
+}
+.skillsContent {
+    display: flex ;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
 
-@media (max-width: 900px) {
+.skills { 
+    background-color: #34363d;
+    width: fit-content;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: #d7d7d7;
+    text-shadow: .5rem .5rem black;
+    font-family: AboutMe;
+    letter-spacing: .5rem;
+}
+
+@media (max-width: 1000px) {
+
 
     .AboutMeMain {
         width: 100%;

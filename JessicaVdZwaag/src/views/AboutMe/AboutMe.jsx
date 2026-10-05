@@ -40,11 +40,22 @@ export function AboutMe() {
                     </article>
                 ))}
                 <article className={styles.AboutMeImgContainer}>
-                    <p className={styles.AboutMeImg}>h</p>
+                    <img src="#" alt="" />
+                    <div className={styles.skillsContainer}>
+                        <h2 className={styles.AboutHeader}>Skills</h2>
+                        <div className={styles.skillsContent}>
+                            <p className={styles.skills}>React</p>
+                            <p className={styles.skills}>HTML</p>
+                            <p className={styles.skills}>CSS</p>
+                            <p className={styles.skills}>JavaScript</p>
+                            <p className={styles.skills}>PHP</p>
+                            <p className={styles.skills}>C</p>
+                        </div>
+                    </div>
                 </article>
                 <button className={styles.closeButton}>
                     <Link to="/">
-                    <img src={close} alt="" className={styles.closeButtonImg}/>
+                        <img src={close} alt="" className={styles.closeButtonImg} />
                     </Link>
                 </button>
 

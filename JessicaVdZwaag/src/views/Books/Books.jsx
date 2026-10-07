@@ -96,7 +96,7 @@ export function Books() {
                 <article className={styles.AboutBooks}>
                     <h1 className={styles.font}>About Books</h1>
                     <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla facilis blanditiis veritatis eius rerum pariatur quia quidem libero adipisci quam, alias perferendis, beatae veniam et architecto reiciendis aperiam, suscipit ea.</p>
+                        <p>Ik lees ontzettend veel en vind het ook altijd erg leuk om boeken aan te raden aan mensen. Daarom heb ik dus ook deze pagina toegevoegd. Er zijn verschillende categorien waar je uit kan kiezen. </p>
                     </div>
                     <Link to={"/"}>
                         <button className={styles.BackButton}>

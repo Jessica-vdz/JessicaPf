@@ -57,7 +57,7 @@ main {
 .GameImg {
 
     position: absolute;
-    width: 15%;
+    width: 20%;
     bottom: 80%;
     left: 20%;
     z-index: 2;

@@ -29,6 +29,13 @@ export function AboutMe() {
                         <div className={styles.AboutInfo}>
                             <p>{item.About}</p>
                         </div>
+                        <div>
+                            <h4 className={styles.AboutHeader}>Contact </h4>
+                        <div className={styles.AboutInfo}>
+                                <p>Tel: +31 06 28817443</p>
+                                <p>Email: Jessicavdz03@gmail.com</p>
+                            </div>
+                        </div>
                         <div className={styles.AboutLinks}>
                             <a href="https://github.com/Jessica-vdz" target="_blank" className={styles.AboutLinksA}>
                                 <img src={github} alt="" className={styles.AboutLinksImg} />
@@ -42,7 +49,7 @@ export function AboutMe() {
                 <article className={styles.AboutMeImgContainer}>
                     <img src="#" alt="" />
                     <div className={styles.skillsContainer}>
-                        <h2 className={styles.AboutHeader}>Skills</h2>
+                        <h2 className={styles.AboutHeader}> Skills </h2>
                         <div className={styles.skillsContent}>
                             <p className={styles.skills}>React</p>
                             <p className={styles.skills}>HTML</p>

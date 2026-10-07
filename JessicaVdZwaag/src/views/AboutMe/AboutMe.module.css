@@ -48,8 +48,9 @@
     font-weight: normal;
     line-height: 0.9;
     letter-spacing: 2px;
-    color: rgb(32, 31, 31);
-    letter-spacing: .1rem;
+    color: #963232;
+    text-shadow: .2rem .1rem black;
+    letter-spacing: .2rem;
 }
 
 
@@ -149,7 +150,7 @@
 .skillsContainer {
     width: 90%;
     padding: 1rem;
-    border: .5rem solid black;
+    border: .5rem solid #752727;
     border-radius: 1rem;
 }
 .skillsContent {
@@ -160,16 +161,20 @@
 }
 
 .skills { 
-    background-color: #34363d;
+    background-color: #752727;
     width: fit-content;
     padding: 1rem;
     border-radius: 1rem;
-    color: #d7d7d7;
-    text-shadow: .5rem .5rem black;
+    color: #e6e6e6;
+    text-shadow: .2rem .1rem black;
     font-family: AboutMe;
     letter-spacing: .5rem;
 }
 
+.AboutmeContact {
+    display: flex;
+    flex-direction: column;
+}
 @media (max-width: 1000px) {
 
 

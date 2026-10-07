@@ -27,9 +27,7 @@ export function Home() {
                     <Link to={'Projects'}>
                         <img src={computer} alt="" className={styles.ComputerImg} />
                     </Link>
-                    <a href="https://39300.hosts2.ma-cloud.nl/flappybird/" target="_blank">
-                        <img src={game} alt="" className={styles.GameImg} />
-                    </a>
+
                     <div className={styles.WindowSection}>
                         <img src={img} alt="" className={styles.WindowImg} />
                     </div>

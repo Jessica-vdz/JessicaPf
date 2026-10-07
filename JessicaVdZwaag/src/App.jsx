@@ -29,11 +29,12 @@ function App() {
           <Link to={'/'} className='navItem'>
             <p>Home</p>
           </Link >
+
           <Link to={'/Projects'} className='navItem'>
             <p>Projecten</p>
           </Link>
           <Link to={'/Books'} className='navItem'>
-            <p>Boeken reviews</p>
+            <p>Boeken</p>
           </Link>
           <Link to={'/AboutMe'} className='navItem'>
             <p>Over Mij</p>
@@ -49,7 +50,11 @@ function App() {
       <BrowserRouter>
         <nav className='menu'>
           <Menu />
-          <button onClick={() => handleClick()} className='menuButton'>-</button>
+          <button onClick={() => handleClick()} className='menuButton'>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </nav>
         <Routes>
           <Route path='/' element={<Home />} />

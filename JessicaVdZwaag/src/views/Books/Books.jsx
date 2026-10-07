@@ -24,7 +24,7 @@ export function Books() {
         if (categoryID === null) return;
 
         fetch(
-            `http://localhost/api/loadBooks.php?categoryID=${categoryID}`
+            `/php/api/loadBooks.php?categoryID=${categoryID}`
         )
             .then(res => res.json())
             .then(data => {

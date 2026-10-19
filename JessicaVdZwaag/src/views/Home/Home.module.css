@@ -4,7 +4,7 @@ main {
     height: 100vh;
     display: flex;
     align-items: flex-end;
-    background-color: #282726ba ;
+    background-color: #282726ba;
 
 }
 
@@ -15,12 +15,16 @@ main {
     position: relative;
 
 }
-
 .WindowSection {
-
-    width: 100%;
-    height: 100%;
-
+    position: absolute;
+    bottom: 90%;
+    z-index: 0;
+    margin: auto;
+    left: 10%;
+}
+.WindowImg {
+    width: 80%;
+    border: .5rem solid rgb(163, 163, 163);
 }
 
 .DeskSection {
@@ -36,7 +40,8 @@ main {
 
     width: 100%;
     display: block;
-
+    z-index: 1;
+    position: relative;
 }
 
 .ComputerImg {
@@ -52,7 +57,7 @@ main {
 .GameImg {
 
     position: absolute;
-    width: 15%;
+    width: 20%;
     bottom: 80%;
     left: 20%;
     z-index: 2;
@@ -80,7 +85,7 @@ main {
 
     position: absolute;
     bottom: 20%;
-    width:20%;
+    width: 20%;
     right: 13%;
 
 }
@@ -90,7 +95,7 @@ main {
     position: absolute;
     bottom: 62%;
     left: 17.5%;
-    
+
 }
 
 .PhotoImg {
@@ -101,7 +106,7 @@ main {
 }
 
 
-@media (max-width: 700px) and (orientation: portrait) {
+@media (max-width: 1000px) and (orientation: portrait) {
 
     main {
         position: relative;
@@ -124,11 +129,9 @@ main {
         box-sizing: border-box;
 
         background:
-            radial-gradient(
-                circle at center,
+            radial-gradient(circle at center,
                 #2b3038 0%,
-                #15171c 75%
-            );
+                #15171c 75%);
 
         color: #cadbe5;
 

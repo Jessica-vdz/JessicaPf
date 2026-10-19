@@ -25,7 +25,7 @@ export function Projects() {
                 console.log(err);
             });
     }, []);
-
+ 
     function handleProjectClick(item) {
         setLoadedProject(item);
     }

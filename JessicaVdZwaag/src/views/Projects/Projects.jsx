@@ -65,7 +65,7 @@ export function Projects() {
                         <div className={styles.Links}>
                             <a href={loadedProject.GitLink} target="_blank" className={styles.GitImg}>{loadedProject.GitLink}</a>
                             <a href={loadedProject.ProjectLink} target="_blank" className={styles.GitImg}>{loadedProject.ProjectLink}</a>
-
+                            <a href={loadedProject.ProjectVideo} target="_blank" className={styles.GitImg}>{loadedProject.ProjectVideo}</a>
                         </div>
                     </aside>
                     <figure className={styles.ProjectImgContainer}>

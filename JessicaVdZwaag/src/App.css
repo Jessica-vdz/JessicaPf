@@ -17,8 +17,16 @@
 }
 
 .navItem {
+    font-family: Arial, sans-serif;
     color: #000;
     text-decoration: none;
+    transition: .5s ease;
+    padding: .5rem;
+    border-radius: 1rem;
+}
+
+.navItem:hover{
+    background-color: rgb(224, 213, 162);
 }
 .menuButton {
     height: fit-content;

@@ -5,6 +5,7 @@ CREATE TABLE
         Description VARCHAR(8000) NOT NULL,
         GitLink VARCHAR(255) NOT NULL,
         ProjectLink VARCHAR(255),
+        ProjectVideo VARCHAR(255),
         ProjectImg VARCHAR(255)
     );
 

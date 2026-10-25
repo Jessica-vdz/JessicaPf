@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import blog from "../../assets/blog.png";
 import back from "../../assets/back.png";
 import file from "../../assets/file.png";
-import betterhome from "../../assets/betterhome.png"
+import art from "../../assets/art.png";
+import dnd from "../../assets/dnd.png";
+import betterhome from "../../assets/betterhome.png";
+import bv from "../../assets/bv.jpeg"
 import styles from "./Projects.module.css";
 
 export function Projects() {
@@ -12,7 +15,11 @@ export function Projects() {
 
     const images = {
         blog: blog,
-        betterhome: betterhome
+        betterhome: betterhome,
+        bv: bv,
+        dnd: dnd,
+        art: art
+
     };
 
     useEffect(() => {
@@ -25,7 +32,7 @@ export function Projects() {
                 console.log(err);
             });
     }, []);
- 
+
     function handleProjectClick(item) {
         setLoadedProject(item);
     }
@@ -62,19 +69,30 @@ export function Projects() {
                 <div className={styles.loadedProjectContent}>
                     <aside className={styles.LoadProjectsDescription}>
                         <p>{loadedProject.Description}</p>
-                        <div className={styles.Links}>
-                            <a href={loadedProject.GitLink} target="_blank" className={styles.GitImg}>{loadedProject.GitLink}</a>
-                            <a href={loadedProject.ProjectLink} target="_blank" className={styles.GitImg}>{loadedProject.ProjectLink}</a>
 
-                        </div>
                     </aside>
-                    <figure className={styles.ProjectImgContainer}>
-                        <img
-                            src={images[loadedProject.ProjectImg]}
-                            alt={loadedProject.Name}
-                            className={styles.ProjectImg}
-                        />
-                    </figure>
+
+                    <div className={styles.LinksContainer}>
+                        <figure className={styles.ProjectImgContainer}>
+                            <img
+                                src={images[loadedProject.ProjectImg]}
+                                alt={loadedProject.Name}
+                                className={styles.ProjectImg}
+                            />
+                        </figure>
+                        <div className={styles.LinksDis}>
+                            <div>
+                                <h4>Talen: {loadedProject.ProjectLanguages}</h4>
+                            </div>
+                            <div className={styles.Links}>
+                                <a href={loadedProject.GitLink} target="_blank" className={styles.GitImg}>{loadedProject.GitLink}</a>
+                                <a href={loadedProject.ProjectLink} target="_blank" className={styles.GitImg}>{loadedProject.ProjectLink}</a>
+
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
             </section>
         );

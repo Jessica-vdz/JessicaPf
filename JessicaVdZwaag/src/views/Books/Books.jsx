@@ -45,9 +45,7 @@ export function Books() {
                         </div>
 
                         <div className={styles.Rating}>
-                            <h2 className={styles.font}>Rating</h2>
                             <h3 className={styles.font}>{info.Author}</h3>
-
                         </div>
                     </div>
                     <div className={styles.Info}>
@@ -65,8 +63,6 @@ export function Books() {
                     <div className={styles.CategoryHeader}>
                         <h2 className={styles.font}>Category</h2>
                     </div>
-
-
                     {category.map((item) => (
                         <button
                             key={item.Id}

@@ -1,37 +1,57 @@
 @font-face {
     font-family: "BooksFont";
-    src: url("../../assets/JMH Typewriter-Black.ttf");
+    src: url("../../assets/JMH Typewriter-Black.ttf") format("truetype");
+    font-display: swap;
+}
+
+:root {
+    --book-bg: #261a12;
+    --shelf-bg: #5a472f;
+    --shelf-wood: #ae8859;
+    --green: #314d1f;
+    --green-dark: #1c3926;
+    --category-bg: rgb(117, 117, 29);
+    --cream: #d2c5a0;
+    --cream-light: #e8d391;
+    --border: #17120e;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .font {
-    font-family: "BooksFont";
+    font-family: "BooksFont", monospace;
 }
 
 .BookMain {
-    background-color: #261a12;
     width: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: var(--book-bg);
+    color: var(--cream);
+
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 
 .Shelf {
-    height: 45%;
     width: 100%;
+    min-height: 19rem;
 
     display: flex;
+    align-items: stretch;
 
-    background-color: #ae8859;
-    border-bottom: 1rem solid black;
+    background-color: var(--shelf-wood);
+    border-bottom: 0.8rem solid var(--border);
 }
 
 .ShelfEnd {
-    height: 100%;
-    width: 10rem;
+    flex: 0 0 5rem;
+    align-self: stretch;
 
     background-image: linear-gradient(
         to right,
@@ -40,140 +60,212 @@
     );
 }
 
-
 .CategoryContainer {
-    width: 20%;
-    height: 100%;
-
-    background-color: rgb(117, 117, 29);
+    flex: 0 0 15rem;
+    width: 15rem;
+    min-width: 0;
 
     display: flex;
     flex-direction: column;
 
-    flex-shrink: 0;
+    background-color: var(--category-bg);
 }
 
 .CategoryHeader {
-    width: 100%;
-
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 0.75rem;
+
+    padding: 1rem;
+    text-align: center;
 }
 
 .CategoryHeader h2 {
-    font-size: 2rem;
+    margin: 0;
+    font-size: 1.5rem;
 }
 
 .CategoryItem {
     width: 100%;
+    min-width: 0;
+    min-height: 3.5rem;
 
-    flex: 1;
+    flex: 1 0 auto;
 
-    padding: 0.5rem;
+    padding: 0.75rem;
 
-    font-size: 2.4rem;
-
-    border-radius: 1.6rem;
-
-    color: #d2c5a0;
-
-    text-shadow: .5rem .5rem .5rem #314d1f;
-
-    box-sizing: border-box;
-
-    font-family: "BooksFont";
-
+    color: var(--cream);
     background-color: #306241;
-    border: 1px solid #71684f;
 
-    transition: .1s ease-in;
+    border: 1px solid #71684f;
+    border-radius: 0.6rem;
+
+    font-family: "BooksFont", monospace;
+    font-size: clamp(1rem, 1.3vw, 1.4rem);
+    line-height: 1.3;
+
+    text-shadow: 0.12rem 0.12rem 0.2rem #172718;
+
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 }
 
 .CategoryItem:hover {
-    background-color: #1c3926;
+    background-color: var(--green-dark);
 }
-.BookContainer {
-    width: fit-content;
-    height: 100%;
 
-    overflow-x: hidden;
-    overflow-y: hidden;
+.CategoryItem:focus-visible,
+.Book:focus-visible,
+.BackButton:focus-visible,
+.Close:focus-visible {
+    outline: 3px solid var(--cream-light);
+    outline-offset: 3px;
+}
+
+.BookContainer {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 19rem;
+    height: auto;
 
     display: flex;
+    align-items: stretch;
+    gap: 0.6rem;
 
-    gap: 1rem;
+    padding: 0.75rem;
 
-    align-items: flex-end;
+    overflow-x: auto;
+    overflow-y: hidden;
 
-    box-sizing: border-box;
+    background-color: var(--shelf-bg);
 
-    background-color: #5a472f;
+    scrollbar-width: thin;
+    scrollbar-color: var(--shelf-wood) var(--shelf-bg);
+    -webkit-overflow-scrolling: touch;
 }
 
 .BookContent {
     height: 100%;
-    width: fit-content;
+    flex: 0 0 auto;
+    min-width: 0;
 }
 
 .Book {
-    max-width: 15rem;
-
-    padding: 1rem;
-
+    width: 15rem;
     height: 100%;
+    min-height: 16rem;
+    padding: 5rem;
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    color: var(--cream);
     text-align: center;
 
+    background-color: #443021;
     background-image: url("../../assets/book.png");
-    background-size: cover;
-    background-color: transparent;
+    background-size: 100% 100%;
     background-position: center;
-
-    border: none;
-
     background-repeat: no-repeat;
 
-    box-shadow: 1rem 0 1rem -0.5rem #3c3020;
+    border: 2px solid transparent;
+    border-radius: 0.15rem;
 
-    transition: .1s ease-in-out;
+    box-shadow: 0.4rem 0 0.8rem -0.3rem #21180f;
+
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .Book h3 {
+    max-width: 100%;
+    margin: 0.5rem 0;
+
+    font-size: clamp(0.8rem, 1.1vw, 1rem);
+    line-height: 1.35;
+
+    overflow-wrap: anywhere;
+}
+
+.Book p {
+    max-width: 100%;
     overflow-wrap: anywhere;
 }
 
 .Book:hover {
-    border: .5rem solid black;
+    border-color: var(--cream-light);
+    transform: translateY(-0.3rem);
 }
 
 .AboutBooksContainer {
     width: 100%;
-    height: 80%;
+    min-width: 0;
+    flex: 1;
 
     display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
 
-    justify-content: space-between;
+    padding: clamp(1rem, 3vw, 2.5rem);
 }
 
 .AboutBooks {
-    background-color: #e8d391;
-
-    width: 30%;
+    flex: 0 1 30%;
+    min-width: 0;
     height: fit-content;
 
-    padding: 1rem;
+    padding: 1.5rem;
+
+    color: #30271a;
+    background-color: var(--cream-light);
+
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1.5rem #00000025;
+}
+
+.AboutBooks h1 {
+    margin-top: 0;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+.AboutBooks p {
+    line-height: 1.7;
+    overflow-wrap: anywhere;
 }
 
 .BackButton {
-    width: 20%;
+    width: 3.5rem;
+    min-width: 3.5rem;
+
+    padding: 0.5rem;
+
+    align-self: flex-start;
 
     background-color: transparent;
     border: none;
+    border-radius: 0.5rem;
 
-    padding: 1rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 
-    transition: .5s ease;
+    transition: background-color 0.2s ease;
 }
 
 .BackButton:hover {
@@ -181,131 +273,202 @@
 }
 
 .BackImg {
+    display: block;
     width: 100%;
+    height: auto;
 }
 
 .BookInfo {
-    width: 65%;
-    height: 100%;
+    flex: 1 1 0;
+    min-width: 0;
 
-    background-color: #314d1f;
+    padding: clamp(1rem, 2.5vw, 2rem);
 
-    padding: 1rem;
+    color: var(--cream);
+    background-color: var(--green);
 
-    box-sizing: border-box;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.5rem 1.5rem #00000025;
 }
 
 .BookHeader {
-    display: flex;
-
-    flex-direction: row;
-
-    gap: 2rem;
-
     width: 100%;
 
-    color: #d2c5a0;
-
+    display: flex;
+    align-items: flex-start;
     justify-content: space-between;
+    gap: 1.5rem;
 
-    text-shadow: .5rem .5rem .5rem #243817;
+    margin-bottom: 1.5rem;
+
+    text-shadow: 0.15rem 0.15rem 0.25rem #243817;
 }
 
 .Header {
-    display: flex;
-
-    align-items: center;
-
+    flex: 1 1 auto;
     min-width: 0;
+
+    display: flex;
+    align-items: center;
 }
 
 .Header h1 {
+    margin: 0;
+
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    line-height: 1.2;
+
     overflow-wrap: anywhere;
 }
 
 .Close {
-    width: 10rem;
-    height: auto;
+    flex: 0 0 3.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
 
     background-color: transparent;
-
     border: none;
     border-radius: 50%;
-}
 
-.CloseImg {
-    width: 60%;
-    height: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .Close:hover {
     background-color: #122318;
+    transform: rotate(8deg);
+}
+
+.CloseImg {
+    display: block;
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
 }
 
 .Rating {
-    width: 25%;
-    min-width: 12rem;
+    flex: 0 0 auto;
+    width: 10rem;
+    max-width: 30%;
 
     text-align: center;
-
-    color: #d2c5a0;
-
-    flex-shrink: 0;
+    color: var(--cream);
 }
 
 .Rating h2 {
     margin: 0;
-
-    font-size: 1.8rem;
+    font-size: 1.2rem;
 }
 
 .RatingNumber {
-    margin: 0.4rem 0;
+    margin: 0.5rem 0;
 
-    font-size: 2.5rem;
+    color: var(--cream-light);
+    font-size: clamp(2rem, 3vw, 3rem);
 
-    color: #e8d391;
-
-    text-shadow:
-        .25rem .25rem .3rem #243817;
+    text-shadow: 0.15rem 0.15rem 0.25rem #243817;
 }
 
 .Author {
-    margin: 0.4rem 0;
-
-    font-size: 1.4rem;
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
 }
 
 .Info {
     width: 100%;
+    min-width: 0;
 }
 
 .Info p {
-    color: #d2c5a0;
+    margin: 0 0 1rem;
 
-    line-height: 1.6;
+    color: var(--cream);
+    font-size: 1.05rem;
+    line-height: 1.8;
+
+    overflow-wrap: anywhere;
 }
 
+/* Tablet */
+
+@media (min-width: 601px) and (max-width: 1000px) {
+    .Shelf {
+        min-height: 17rem;
+    }
+
+    .ShelfEnd {
+        flex-basis: 2rem;
+    }
+
+    .CategoryContainer {
+        flex-basis: 12rem;
+        width: 12rem;
+    }
+
+    .CategoryItem {
+        padding: 0.6rem;
+        font-size: 1rem;
+    }
+
+    .BookContainer {
+        min-height: 17rem;
+        gap: 0.4rem;
+        padding: 0.5rem;
+    }
+
+    .Book {
+        width: 6.5rem;
+        min-height: 15rem;
+    }
+
+    .AboutBooksContainer {
+        gap: 1rem;
+        padding: 1.25rem;
+    }
+
+    .AboutBooks {
+        flex-basis: 32%;
+        padding: 1rem;
+    }
+
+    .BookInfo {
+        padding: 1.25rem;
+    }
+
+    .BookHeader {
+        gap: 0.75rem;
+    }
+
+    .Rating {
+        width: 7rem;
+    }
+}
+
+/* Mobiel */
+
 @media (max-width: 600px) {
-
     .BookMain {
+        min-height: 100vh;
         min-height: 100dvh;
-
-        width: 100%;
-
-        overflow-x: hidden;
+        overflow-x: clip;
     }
 
     .Shelf {
-        width: 100%;
-
-        height: auto;
         min-height: 0;
-
-        display: flex;
         flex-direction: column;
-
-        border-bottom: 0.4rem solid #000;
+        border-bottom-width: 0.4rem;
     }
 
     .ShelfEnd {
@@ -314,178 +477,151 @@
 
     .CategoryContainer {
         width: 100%;
-        height: auto;
+        min-width: 0;
+        flex: none;
 
         display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.4rem;
 
-        grid-template-columns: repeat(2, 1fr);
+        padding: 0.65rem;
 
-        gap: 0.35rem;
-
-        padding: 0.5rem;
-
-        box-sizing: border-box;
-
-        background-color: rgb(117, 117, 29);
+        background-color: var(--category-bg);
     }
 
     .CategoryHeader {
         grid-column: 1 / -1;
-
-        padding: 0.25rem 0;
+        padding: 0.3rem;
     }
 
     .CategoryHeader h2 {
-        margin: 0.25rem;
-
-        font-size: 1.3rem;
+        font-size: 1.25rem;
     }
 
     .CategoryItem {
         width: 100%;
+        min-width: 0;
+        min-height: 2.8rem;
 
-        min-height: 3.2rem;
+        padding: 0.6rem 0.4rem;
 
-        padding: 0.5rem;
+        font-size: 0.95rem;
+        line-height: 1.25;
 
-        font-size: 1rem;
-
-        line-height: 1.1;
-
-        border-radius: 0.5rem;
-
-        text-shadow:
-            0.15rem 0.15rem 0.2rem #314d1f;
+        border-radius: 0.45rem;
+        text-shadow: 0.1rem 0.1rem 0.15rem #172718;
     }
 
     .BookContainer {
         width: 100%;
-        height: 155px;
+        min-width: 0;
+        min-height: 0;
+        height: 10.5rem;
+
+        flex: none;
 
         display: flex;
+        align-items: stretch;
+        gap: 0.55rem;
 
-        align-items: flex-end;
-
-        gap: 0.5rem;
-
-        padding: 0.5rem 0.75rem;
+        padding: 0.5rem 0.65rem;
 
         overflow-x: auto;
         overflow-y: hidden;
 
-        box-sizing: border-box;
+        background-color: var(--shelf-bg);
 
-        background-color: #5a472f;
-
-        scrollbar-width: none;
-
+        scrollbar-width: thin;
+        scrollbar-color: var(--shelf-wood) var(--shelf-bg);
         -webkit-overflow-scrolling: touch;
-    }
-
-    .BookContainer::-webkit-scrollbar {
-        display: none;
     }
 
     .BookContent {
         height: 100%;
-
+        min-width: 0;
         flex: 0 0 auto;
     }
 
     .Book {
-        width: 75px;
-        height: 140px;
+        width: 5.5rem;
+        height: 100%;
+        min-height: 0;
 
-        max-width: none;
+        padding: 0.4rem 0.25rem;
 
-        padding: 0.4rem;
-
-        font-size: 0.75rem;
-
-        box-shadow:
-            0.3rem 0 0.4rem -0.2rem #3c3020;
+        border-radius: 0.15rem;
+        box-shadow: 0.2rem 0 0.4rem #21180f;
     }
 
     .Book h3 {
-        font-size: 0.75rem;
-
-        line-height: 1.15;
-
-        margin: 0.25rem 0;
+        margin: 0.3rem 0;
+        font-size: 0.7rem;
+        line-height: 1.2;
     }
 
     .Book p {
+        margin: 0.2rem 0;
         font-size: 0.65rem;
-
-        line-height: 1.1;
+        line-height: 1.2;
     }
 
     .Book:hover {
-        border: none;
+        transform: none;
+        border-color: transparent;
     }
 
     .AboutBooksContainer {
         width: 100%;
-
-        height: auto;
+        min-width: 0;
+        flex: 1;
 
         display: flex;
-
         flex-direction: column;
-
+        align-items: stretch;
         gap: 0.75rem;
 
         padding: 0.75rem;
-
-        box-sizing: border-box;
     }
 
     .AboutBooks {
         width: 100%;
-
-        height: auto;
+        max-width: none;
+        min-width: 0;
+        flex: none;
 
         padding: 1rem;
 
-        box-sizing: border-box;
+        border-radius: 0.5rem;
     }
 
     .AboutBooks h1 {
-        font-size: 1.5rem;
+        margin: 0 0 0.6rem;
+        font-size: 1.4rem;
     }
 
     .AboutBooks p {
-        font-size: 0.9rem;
-
-        line-height: 1.55;
+        margin: 0.5rem 0;
+        font-size: 0.95rem;
+        line-height: 1.65;
     }
 
     .BookInfo {
         width: 100%;
-
-        height: auto;
-
-        min-height: 0;
+        min-width: 0;
+        flex: none;
 
         padding: 1rem;
-
-        box-sizing: border-box;
 
         border-radius: 0.5rem;
     }
 
     .BookHeader {
-        width: 100%;
-
         display: grid;
-
-        grid-template-columns: 1fr auto;
-
+        grid-template-columns: minmax(0, 1fr) 2.5rem;
+        align-items: start;
         gap: 0.5rem;
 
-        align-items: center;
-
-        margin-bottom: 1rem;
+        margin-bottom: 0.75rem;
     }
 
     .Header {
@@ -493,99 +629,279 @@
     }
 
     .Header h1 {
-        margin: 0;
-
         font-size: 1.35rem;
-
-        line-height: 1.25;
-
-        overflow-wrap: anywhere;
+        line-height: 1.3;
     }
 
     .Close {
-        width: 2.75rem;
-        height: 2.75rem;
-
-        padding: 0;
-
-        flex-shrink: 0;
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        min-width: 0;
+        flex: none;
     }
 
     .CloseImg {
-        width: 65%;
+        width: 60%;
+        height: 60%;
     }
 
     .Rating {
         grid-column: 1 / -1;
 
         width: 100%;
-
+        max-width: none;
         min-width: 0;
 
-        display: flex;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        column-gap: 0.75rem;
 
-        flex-direction: column;
-
-        align-items: flex-start;
+        padding: 0.7rem 0;
 
         text-align: left;
 
-        padding: 0.6rem 0 0.75rem;
-
-        border-top: 2px solid #243817;
-        border-bottom: 2px solid #243817;
+        border-top: 1px solid #243817;
+        border-bottom: 1px solid #243817;
     }
 
     .Rating h2 {
-        margin: 0;
-
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .RatingNumber {
-        margin: 0.25rem 0;
-
-        font-size: 2.2rem;
-
-        line-height: 1;
-
-        color: #e8d391;
-
-        text-shadow:
-            0.15rem 0.15rem 0.2rem #243817;
+        margin: 0;
+        font-size: 1.8rem;
+        line-height: 1.2;
     }
 
     .Author {
-        margin: 0.2rem 0 0;
+        grid-column: 1 / -1;
+        margin: 0.3rem 0 0;
 
-        font-size: 1rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
     }
 
     .Info {
         width: 100%;
+        min-width: 0;
     }
 
     .Info p {
-        margin-top: 0.75rem;
-        margin-bottom: 0.75rem;
-
+        margin: 0.75rem 0;
         font-size: 0.95rem;
-
-        line-height: 1.6;
-
-        overflow-wrap: anywhere;
+        line-height: 1.7;
     }
 
     .BackButton {
-        width: 3rem;
+        width: 2.75rem;
+        min-width: 2.75rem;
+        padding: 0.35rem;
+    }
+}
 
-        padding: 0.4rem;
+/* Extra kleine schermen */
 
-        flex-shrink: 0;
+@media (max-width: 360px) {
+    .CategoryContainer {
+        gap: 0.3rem;
+        padding: 0.45rem;
+    }
+
+    .CategoryItem {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.85rem;
+    }
+
+    .BookContainer {
+        height: 9.5rem;
+        gap: 0.4rem;
+    }
+
+    .Book {
+        width: 4.8rem;
+    }
+
+    .Book h3 {
+        font-size: 0.65rem;
+    }
+
+    .AboutBooksContainer {
+        padding: 0.5rem;
+    }
+
+    .BookInfo,
+    .AboutBooks {
+        padding: 0.75rem;
+    }
+
+    .Header h1 {
+        font-size: 1.15rem;
+    }
+}
+
+/* Minder beweging voor toegankelijkheid */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Categorieën */
+.CategoryHeader h2 {
+    font-size: 2.4rem;
+}
+
+.CategoryItem {
+    font-size: 1.8rem;
+    line-height: 1.5;
+}
+
+/* Boeken op de boekenplank */
+.Book h3 {
+    font-size: 1.6rem;
+    line-height: 1.4;
+}
+
+.Book p {
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+/* Algemene informatie */
+.AboutBooks h1 {
+    font-size: 2.8rem;
+    line-height: 1.3;
+}
+
+.AboutBooks p {
+    font-size: 1.8rem;
+    line-height: 1.8;
+}
+
+/* Details van een boek */
+.Header h1 {
+    font-size: 3.2rem;
+    line-height: 1.3;
+}
+
+.Rating h2 {
+    font-size: 1.8rem;
+}
+
+.RatingNumber {
+    font-size: 3.6rem;
+}
+
+.Author {
+    font-size: 1.8rem;
+    line-height: 1.6;
+}
+
+.Info p {
+    font-size: 1.8rem;
+    line-height: 1.9;
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 1000px) {
+    .CategoryItem {
+        font-size: 1.6rem;
+    }
+
+    .Book h3 {
+        font-size: 1.3rem;
+    }
+
+    .Book p {
+        font-size: 1.2rem;
+    }
+
+    .AboutBooks h1 {
+        font-size: 2.4rem;
+    }
+
+    .AboutBooks p,
+    .Info p {
+        font-size: 1.6rem;
+    }
+
+    .Header h1 {
+        font-size: 2.8rem;
+    }
+}
+
+/* Mobiel */
+@media (max-width: 600px) {
+    .CategoryHeader h2 {
+        font-size: 2rem;
+    }
+
+    .CategoryItem {
+        font-size: 1.5rem;
+        line-height: 1.4;
+    }
+
+    .Book h3 {
+        font-size: 1.1rem;
+        line-height: 1.3;
+    }
+
+    .Book p {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .AboutBooks h1 {
+        font-size: 2.2rem;
+    }
+
+    .AboutBooks p {
+        font-size: 1.6rem;
+        line-height: 1.7;
+    }
+
+    .Header h1 {
+        font-size: 2.2rem;
+    }
+
+    .Rating h2 {
+        font-size: 1.5rem;
+    }
+
+    .RatingNumber {
+        font-size: 2.8rem;
+    }
+
+    .Author {
+        font-size: 1.5rem;
+    }
+
+    .Info p {
+        font-size: 1.6rem;
+        line-height: 1.8;
+    }
+}
+
+/* Zeer kleine telefoons */
+@media (max-width: 360px) {
+    .CategoryItem {
+        font-size: 1.3rem;
+    }
+
+    .Book h3 {
+        font-size: 1rem;
+    }
+
+    .AboutBooks p,
+    .Info p {
+        font-size: 1.5rem;
     }
 }

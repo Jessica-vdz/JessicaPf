@@ -4,6 +4,7 @@ import styles from "../AboutMe/AboutMe.module.css";
 import github from "../../assets/github.png";
 import linkedin from "../../assets/linkedin.png";
 import close from "../../assets/close.png"
+import ik from "../../assets/ik.jpg"
 export function AboutMe() {
     const [me, setMe] = useState([]);
 
@@ -24,14 +25,14 @@ export function AboutMe() {
                     <article key={item.Me_ID} className={styles.AboutContainer}>
                         <div className={styles.AboutHeader}>
                             <h1>{item.Name}</h1>
-                            <h3>{item.Location}</h3>
+                            <h3 className={styles.AboutHeaderSub}>{item.Location}</h3>
                         </div>
                         <div className={styles.AboutInfo}>
                             <p>{item.About}</p>
                         </div>
                         <div>
-                            <h4 className={styles.AboutHeader}>Contact </h4>
-                        <div className={styles.AboutInfo}>
+                            <h3 className={styles.AboutHeaderSub}>Contact </h3>
+                            <div className={styles.AboutInfo}>
                                 <p>Tel: +31 06 28817443</p>
                                 <p>Email: Jessicavdz03@gmail.com</p>
                             </div>
@@ -47,7 +48,7 @@ export function AboutMe() {
                     </article>
                 ))}
                 <article className={styles.AboutMeImgContainer}>
-                    <img src="#" alt="" />
+                    <img src={ik} alt="" />
                     <div className={styles.skillsContainer}>
                         <h2 className={styles.AboutHeader}> Skills </h2>
                         <div className={styles.skillsContent}>
@@ -57,6 +58,7 @@ export function AboutMe() {
                             <p className={styles.skills}>JavaScript</p>
                             <p className={styles.skills}>PHP</p>
                             <p className={styles.skills}>C</p>
+                            <p className={styles.skills}>C#</p>
                         </div>
                     </div>
                 </article>

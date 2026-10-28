@@ -1,4 +1,8 @@
 INSERT INTO Category (Name)
-VALUE('Fiction')
+VALUES('Romance');
 INSERT INTO Category (Name)
-VALUE('Bio')
+VALUES('Thriller');
+INSERT INTO Category (Name)
+VALUES('Dystopian');
+INSERT INTO Category (Name)
+VALUES('Fantasy');

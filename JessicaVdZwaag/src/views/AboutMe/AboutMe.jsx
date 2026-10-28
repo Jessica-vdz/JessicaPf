@@ -38,10 +38,10 @@ export function AboutMe() {
                             </div>
                         </div>
                         <div className={styles.AboutLinks}>
-                            <a href="https://github.com/Jessica-vdz" target="_blank" className={styles.AboutLinksA}>
+                            <a href={item.Github} target="_blank" className={styles.AboutLinksA}>
                                 <img src={github} alt="" className={styles.AboutLinksImg} />
                             </a>
-                            <a href="" target="_blank" className={styles.AboutLinksA}>
+                            <a href={item.Linkedin} target="_blank" className={styles.AboutLinksA}>
                                 <img src={linkedin} alt="" className={styles.AboutLinksImg} />
                             </a>
                         </div>

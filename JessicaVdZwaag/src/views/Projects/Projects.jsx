@@ -7,6 +7,7 @@ import art from "../../assets/art.png";
 import dnd from "../../assets/dnd.png";
 import betterhome from "../../assets/betterhome.png";
 import bv from "../../assets/bv.jpeg"
+import pf from "../../assets/pf.png"
 import styles from "./Projects.module.css";
 
 export function Projects() {
@@ -18,7 +19,8 @@ export function Projects() {
         betterhome: betterhome,
         bv: bv,
         dnd: dnd,
-        art: art
+        art: art,
+        pf:pf
 
     };
 
@@ -69,17 +71,12 @@ export function Projects() {
                 <div className={styles.loadedProjectContent}>
                     <aside className={styles.LoadProjectsDescription}>
                         <p>{loadedProject.Description}</p>
-                        <div className={styles.Links}>
-                            <a href={loadedProject.GitLink} target="_blank" className={styles.GitImg}>{loadedProject.GitLink}</a>
-                            <a href={loadedProject.ProjectLink} target="_blank" className={styles.GitImg}>{loadedProject.ProjectLink}</a>
-                            <a href={loadedProject.ProjectVideo} target="_blank" className={styles.GitImg}>{loadedProject.ProjectVideo}</a>
-                        </div>
                     </aside>
 
                     <div className={styles.LinksContainer}>
                         <figure className={styles.ProjectImgContainer}>
                             <img
-                                src={images[loadedProject.ProjectImg]}
+                                src={`http://localhost${loadedProject.ProjectImg}`}
                                 alt={loadedProject.Name}
                                 className={styles.ProjectImg}
                             />

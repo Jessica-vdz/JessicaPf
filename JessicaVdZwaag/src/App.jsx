@@ -8,6 +8,8 @@ import './App.css'
 import { Home } from './views/Home/Home';
 import { AboutMe } from './views/AboutMe/AboutMe';
 import { Books } from './views/Books/Books';
+import { Login } from './views/Login/login';
+import { Admin } from './views/admin/admin';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -57,10 +59,12 @@ function App() {
           </button>
         </nav>
         <Routes>
+          <Route path='/login' element={<Login/>}/>
           <Route path='/' element={<Home />} />
           <Route path='/Projects' element={<Projects />} />
           <Route path='/Books' element={<Books />} />
           <Route path='/AboutMe' element={<AboutMe />} />
+          <Route path='/Admin' element={<Admin/>} />
         </Routes>
       </BrowserRouter>
 

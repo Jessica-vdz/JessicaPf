@@ -34,15 +34,7 @@ if (!isset($data["action"])) {
 
 switch ($data["action"]) {
     case "project":
-        if (
-            !isset(
-            $data["name"],
-            $data["description"],
-            $data["gitlink"],
-            $data["projectLanguages"],
-
-            $_FILES["projectImg"]
-        )
+        if (!isset($data["name"], $data["description"], $data["gitlink"], $data["projectLanguages"], $_FILES["projectImg"])
         ) {
             http_response_code(400);
             echo json_encode([
@@ -98,15 +90,7 @@ switch ($data["action"]) {
             VALUES (?, ?, ?, ?, ?, ?)"
         );
 
-        $stmt->bind_param(
-            "ssssss",
-            $name,
-            $description,
-            $gitlink,
-            $projectlink,
-            $projectImg,
-            $projectLanguages
-        );
+        $stmt->bind_param("ssssss", $name, $description, $gitlink, $projectlink, $projectImg, $projectLanguages);
 
         if ($stmt->execute()) {
             echo json_encode([
@@ -118,6 +102,39 @@ switch ($data["action"]) {
             echo json_encode([
                 "success" => false,
                 "message" => "Database insert failed"
+            ]);
+        }
+
+        $stmt->close();
+        break;
+
+    case "book":
+        if (!isset($data["title"], $data["author"], $data["description"], $data["categoryId"])) {
+            http_response_code(400);
+            echo json_encode([
+                "succes" => false,
+                "message" => "missing fields"
+            ]);
+            exit;
+        }
+
+        $title = $data["title"];
+        $author = $data["author"];
+        $description = $data["description"];
+        $categoryID = $data["categoryId"];
+
+        $stmt = $conn->prepare("INSERT INTO Books (Title, Author, Description, Category_ID) VALUES (?,?,?,?)");
+        $stmt->bind_param("sssi", $title, $author, $description, $categoryID);
+        if ($stmt->execute()) {
+            echo json_encode([
+                "succes" => true,
+                "message" => "books added"
+                ]);
+        } else {
+            http_response_code(500);
+            echo json_encode([
+                "succes" => false,
+                "message" => "Failed"
             ]);
         }
 

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export function ProjectAdd() {
     const [name, setName] = useState("");
@@ -40,7 +40,7 @@ export function ProjectAdd() {
                 throw new Error(data.message || "Opslaan mislukt");
             }
 
-            if (data.succes) {
+            if (data.success) {
                 console.log("Project succesvol toegevoegd!");
             } else {
                 console.error(data.message);
@@ -86,16 +86,93 @@ export function ProjectAdd() {
                     <h4>Project Lanuages</h4>
                     <input type="text" value={ProjectLanguages} onChange={(e) => setProjectLanguages(e.target.value)} />
                 </label>
-                <button type="submit">Post</button>
+                <button type="submit">Toevoegen</button>
             </form>
         </section>
     )
 }
 
 export function BookAdd() {
+    const [categoryList, setCategoryList] = useState([]);
+    const [title, setTitle] = useState("");
+    const [author, setAuthor] = useState("");
+    const [description, setDescription] = useState("");
+    const [categoryId, setCategoryId] = useState("");
 
+    useEffect(() => {
+        fetch("http://localhost/api/loadCategories.php")
+            .then(res => res.json())
+            .then(data => {
+                setCategoryList(data)
+            })
+    }, [])
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+
+        formData.append("action", "book");
+        formData.append("title", title);
+        formData.append("author", author);
+        formData.append("description", description);
+        formData.append("categoryId", categoryId);
+
+        try {
+            const response = await fetch("http://localhost/api/post.php", {
+                method: "POST",
+                credentials: "include",
+                body: formData
+            }); 
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || "Opslaan mislukt");
+            }
+
+            if (data.success) {
+                console.log(data.message);
+            } else {
+                console.error(data.message);
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+
+    }
+
+    return (
+        <section>
+            <form onSubmit={handleClick}>
+                <label>
+                    <h4>Titel</h4>
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                </label>
+                <label>
+                    <h4>auteur</h4>
+                    <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
+                </label>
+                <label>
+                    <h4>Omschrijving</h4>
+                    <textarea value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                </label>
+                <select value={categoryId} onChange={(e) => setCategoryId(e.target.value)}>
+                    <option value="">Kies de Category</option>
+                    {categoryList.map((item) => (
+                        <option key={item.Id} value={item.Id}>{item.Name}</option>
+                    ))}
+                </select>
+                <button type="submit">Toevoegen</button>
+            </form>
+        </section>
+    )
 }
 
 export function MeAdd() {
-
+    return(
+        <section>
+            
+        </section>
+    )
 }

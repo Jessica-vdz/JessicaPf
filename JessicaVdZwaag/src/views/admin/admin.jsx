@@ -61,10 +61,8 @@ export function Admin() {
     if (status === "error") return <p>Er ging iets mis.</p>;
 
     function handleClick(value) {
-        if (value == "project") {
-            setActiveForm(value)
-        }
-
+        setActiveForm(value)
+        console.log(books)
     }
     return (
         <section className={styles.adminMain}>

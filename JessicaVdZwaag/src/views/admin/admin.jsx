@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import styles from "./admin.module.css"
 import { BookAdd, MeAdd, ProjectAdd } from "./post";
+import { ProjectEdit } from "./edit";
 
 export function Admin() {
     const [status, setStatus] = useState("loading");
@@ -12,6 +13,7 @@ export function Admin() {
     const [me, setMe] = useState([]);
     const [deleteItem, setDeleteItem] = useState("")
     const [category, setCategory] = useState("");
+    const [id, setId] = useState("");
 
     useEffect(() => {
         fetch("http://localhost/api/auth.php", {
@@ -66,6 +68,14 @@ export function Admin() {
         setActiveForm(value)
     }
 
+    function handleEdit(value, category) {
+        setId(value);
+        setCategory(category);
+        setActiveForm(category)
+
+    }
+
+
     async function handleDelte(value, action) {
         setDeleteItem(value)
         setCategory(action);
@@ -91,56 +101,68 @@ export function Admin() {
         } catch (err) {
             console.error(err);
         }
-}
-return (
-    <section className={styles.adminMain}>
-        <article>
-            <div className={styles.adminHeader}>
-                <h2>Projects</h2>
-                <button onClick={(e) => handleClick("project")}>Toevoegen</button>
-            </div>
-            {projects.map((item) => (
-                <div key={item.Project_ID}>
-                    <div className={styles.itemHeader}>
-                        <h3>{item.Name}</h3>
-                    </div>
-                    <button onClick={(e) => handleDelte(item.Project_ID, "projects")}>Verwijderen</button>
+    }
+    return (
+        <section className={styles.adminMain}>
+            <article>
+                <div className={styles.adminHeader}>
+                    <h2>Projects</h2>
+                    <button onClick={(e) => handleClick("project")}>Toevoegen</button>
                 </div>
-            ))}
-        </article>
+                {projects.map((item) => (
+                    <div key={item.Project_ID}>
+                        <div className={styles.itemHeader}>
+                            <h3>{item.Name}</h3>
+                        </div>
+                        <button onClick={(e) => handleDelte(item.Project_ID, "projects")}>Verwijderen</button>
+                        <button onClick={(e) => handleEdit(item.Project_ID, "projectEdit")}>Edit</button>
 
-        <article>
-            <div className={styles.adminHeader}>
-                <h2>Book</h2>
-                <button onClick={(e) => handleClick("book")}>Toevoegen</button>
-            </div>
-            {books.map((item) => (
-                <div key={item.Books_ID}>
-                    <div className={styles.itemHeader}>
-                        <h3>{item.Title}</h3>
                     </div>
-                    <button onClick={(e) => handleDelte(item.Books_ID, "books")}>Verwijderen</button>
-                </div>
-            ))}
-        </article>
+                ))}
+            </article>
 
-        <article>
-            <div className={styles.adminHeader}>
-                <h2>Me</h2>
-                <button onClick={(e) => handleClick("me")}>Toevoegen</button>
-            </div>
-            {me.map((item) => (
-                <div key={item.Me_ID}>
-                    <div className={styles.itemHeader}>
-                        <h3>{item.Name}</h3>
-                    </div>
-                    <button onClick={(e) => handleDelte(item.Me_ID, "me")}>Verwijderen</button>
+            <article>
+                <div className={styles.adminHeader}>
+                    <h2>Book</h2>
+                    <button onClick={(e) => handleClick("book")}>Toevoegen</button>
                 </div>
-            ))}
-        </article>
-        {activeForm === "project" && <ProjectAdd />}
-        {activeForm === "book" && <BookAdd />}
-        {activeForm === "me" && <MeAdd />}
-    </section>
-);
+                {books.map((item) => (
+                    <div key={item.Books_ID}>
+                        <div className={styles.itemHeader}>
+                            <h3>{item.Title}</h3>
+                        </div>
+                        <div>
+                            <button onClick={(e) => handleDelte(item.Books_ID, "books")}>Verwijderen</button>
+                            <button onClick={(e) => handleEdit(item.Books_ID, "books")}>Edit</button>
+                        </div>
+                    </div>
+                ))}
+            </article>
+
+            <article>
+                <div className={styles.adminHeader}>
+                    <h2>Me</h2>
+                    <button onClick={(e) => handleClick("me")}>Toevoegen</button>
+                </div>
+                {me.map((item) => (
+                    <div key={item.Me_ID}>
+                        <div className={styles.itemHeader}>
+                            <h3>{item.Name}</h3>
+                        </div>
+                        <div>
+                            <button onClick={(e) => handleDelte(item.Me_ID, "me")}>Verwijderen</button>
+                            <button onClick={(e) => handleEdit(item.Me_ID, "me")}>Edit</button>
+
+                        </div>
+
+                    </div>
+                ))}
+            </article>
+            {activeForm === "project" && <ProjectAdd />}
+            {activeForm === "book" && <BookAdd />}
+            {activeForm === "me" && <MeAdd />}
+            
+            {activeForm === "projectEdit" && <ProjectEdit id={id}/>}
+        </section>
+    );
 }

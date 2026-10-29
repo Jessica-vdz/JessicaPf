@@ -16,7 +16,7 @@ CREATE TABLE
         Location VARCHAR(255) NOT NULL,
         Info TEXT,
         Github VARCHAR(255),
-        Linkedin VARCHAR(255)
+        Linkedin VARCHAR(255),
         Email VARCHAR(255) UNIQUE
     );
 

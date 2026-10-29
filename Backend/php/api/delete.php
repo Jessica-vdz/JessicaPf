@@ -34,7 +34,7 @@ if (!isset($data["category"])) {
 
 switch ($data["category"]) {
     case "me":
-        if (!isset($data['deleteItem'])){
+        if (!isset($data['deleteItem'])) {
             http_response_code(400);
             echo json_encode([
                 "success" => false,
@@ -50,7 +50,7 @@ switch ($data["category"]) {
         if ($stmt->execute()) {
             echo json_encode([
                 "success" => true,
-                "message" => "deleted"
+                "message" => "delete Me"
             ]);
         } else {
             http_response_code(500);
@@ -59,4 +59,53 @@ switch ($data["category"]) {
                 "message" => "Database insert failed"
             ]);
         }
+        $stmt->close();
+        break;
+
+    case "projects":
+        if (!isset($data['deleteItem'])) {
+            http_response_code(400);
+            echo json_encode([
+                "success" => false,
+                "message" => "missing fields"
+            ]);
+            exit;
+        }
+
+        $id = $data['deleteItem'];
+
+        $stmt = $conn->prepare("DELETE FROM Projects WHERE  Project_ID = ?");
+        $stmt->bind_param("i", $id);
+
+        if ($stmt->execute()) {
+            echo json_encode([
+                "success" => true,
+                "message" => "delete Projects"
+            ]);
+        }
+        $stmt->close();
+        break;
+
+    case "books":
+        if (!isset($data['deleteItem'])) {
+            http_response_code(400);
+            echo json_encode([
+                "success" => false,
+                "message" => "missing fields"
+            ]);
+            exit;
+        }
+
+        $id = $data['deleteItem'];
+
+        $stmt = $conn->prepare("DELETE FROM Books WHERE  Books_ID = ?");
+        $stmt->bind_param("i", $id);
+
+        if ($stmt->execute()) {
+            echo json_encode([
+                "success" => true,
+                "message" => "delete Projects"
+            ]);
+        }
+        $stmt->close();
 }

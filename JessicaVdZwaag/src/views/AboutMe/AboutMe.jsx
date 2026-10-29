@@ -33,7 +33,6 @@ export function AboutMe() {
                         <div>
                             <h3 className={styles.AboutHeaderSub}>Contact </h3>
                             <div className={styles.AboutInfo}>
-                                <p>Tel: +31 06 28817443</p>
                                 <p>Email: Jessicavdz03@gmail.com</p>
                             </div>
                         </div>

@@ -123,7 +123,7 @@ export function BookAdd() {
                 method: "POST",
                 credentials: "include",
                 body: formData
-            }); 
+            });
             const data = await response.json();
 
             if (!response.ok) {
@@ -170,9 +170,66 @@ export function BookAdd() {
 }
 
 export function MeAdd() {
-    return(
+    const [name, setName] = useState("");
+    const [info, setInfo] = useState("");
+    const [email, setEmail] = useState("");
+    const [location, setLocation] = useState("");
+    const [github, setGithub] = useState("");
+    const [linkedin, setLinkedin] = useState("");
+
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("action", "me");
+        formData.append("name", name);
+        formData.append("info", info);
+        formData.append("email", email);
+        formData.append("github", github);
+        formData.append("linkedin", linkedin);
+        formData.append("location", location);
+
+        try {
+            const response = await fetch("http://localhost/api/post.php", {
+                method: "POST",
+                credentials: "include",
+                body: formData
+            })
+            const data = await response.json();
+
+
+            if (data.success) {
+                console.log(data.message)
+            } else {
+                console.log(data.message)
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+    return (
         <section>
-            
+            <form onSubmit={handleClick}>
+                <label>
+                    <h4>Naam</h4>
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                    <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+                </label>
+                <label>
+                    <h4>Info</h4>
+                    <textarea value={info} onChange={(e) => setInfo(e.target.value)}></textarea>
+                </label>
+                <label>
+                    <h4>Contact</h4>
+                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <input type="text" value={github} onChange={(e) => setGithub(e.target.value)} />
+                    <input type="text" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} />
+                </label>
+                label
+                <button type="submit">Toevoegen</button>
+            </form>
         </section>
     )
 }

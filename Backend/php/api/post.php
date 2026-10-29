@@ -34,14 +34,13 @@ if (!isset($data["action"])) {
 
 switch ($data["action"]) {
     case "project":
-        if (!isset($data["name"], $data["description"], $data["gitlink"], $data["projectLanguages"], $_FILES["projectImg"])
+        if (
+            !isset($data["name"], $data["description"], $data["gitlink"], $data["projectLanguages"], $_FILES["projectImg"])
         ) {
             http_response_code(400);
             echo json_encode([
                 "success" => false,
                 "message" => "Niet alle velden zijn ingevuld",
-                "received_fields" => array_keys($_POST),
-                "received_files" => array_keys($_FILES)
             ]);
             exit;
         }
@@ -129,7 +128,7 @@ switch ($data["action"]) {
             echo json_encode([
                 "succes" => true,
                 "message" => "books added"
-                ]);
+            ]);
         } else {
             http_response_code(500);
             echo json_encode([
@@ -141,6 +140,44 @@ switch ($data["action"]) {
         $stmt->close();
         break;
 
+    case "me":
+        if (
+            !isset($data["name"], $data['location'],$data["info"], $data["email"], $data["github"], $data["linkedin"])
+        ) {
+            http_response_code(400);
+            echo json_encode([
+                "success" => false,
+                "message" => "Niet alle velden zijn ingevuld",
+            ]);
+            exit;
+        }
+
+        $name = $data["name"];
+        $location = $data["location"];
+        $info = $data["info"];
+        $email = $data["email"];
+        $github = $data["github"];
+        $linkedin = $data["linkedin"];
+
+        $stmt = $conn->prepare("INSERT INTO Me (Name, Location, Info, Github, Linkedin, Email) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $name, $location, $info, $github, $linkedin, $email);
+
+
+        if ($stmt->execute()) {
+            echo json_encode([
+                "success" => true,
+                "message" => "Project added"
+            ]);
+        } else {
+            http_response_code(500);
+            echo json_encode([
+                "success" => false,
+                "message" => "Database insert failed"
+            ]);
+        }
+
+        $stmt->close();
+        break;
     default:
         http_response_code(400);
         echo json_encode([

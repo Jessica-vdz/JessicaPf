@@ -10,6 +10,8 @@ export function Admin() {
     const [projects, setProjects] = useState([]);
     const [books, setBooks] = useState([]);
     const [me, setMe] = useState([]);
+    const [deleteItem, setDeleteItem] = useState("")
+    const [category ,setCategory] = useState("");
 
     useEffect(() => {
         fetch("http://localhost/api/auth.php", {
@@ -62,7 +64,35 @@ export function Admin() {
 
     function handleClick(value) {
         setActiveForm(value)
-        console.log(books)
+    }
+
+    function handleDelte(value, action) {
+        setDeleteItem(value)
+        setCategory(action);
+
+        const formData = new FormData();
+
+        formData.append("category", category);
+        formData.append("deleteItem", deleteItem)
+        try {
+
+        const response = fetch("http://localhost/api/delete.php", {
+            method: "POST",
+            credentials:"include",
+            body : formData
+        })
+        .then(res => res.json())
+
+        const data = response.json();
+        if (data.success) {
+            console.log(data.message);
+        } else {
+            console.log(data.message);
+        }
+    }
+    catch(err) {
+        console.log(err);
+    }
     }
     return (
         <section className={styles.adminMain}>
@@ -97,13 +127,14 @@ export function Admin() {
             <article>
                 <div className={styles.adminHeader}>
                     <h2>Me</h2>
-                    <button onClick={(e) => handleClick("project")}>Toevoegen</button>
+                    <button onClick={(e) => handleClick("me")}>Toevoegen</button>
                 </div>
                 {me.map((item) => (
                     <div key={item.Me_ID}>
                         <div className={styles.itemHeader}>
                             <h3>{item.Name}</h3>
                         </div>
+                        <button onClick={(e) => handleDelte(item.Me_ID, "me")}>Verwijderen</button>
                     </div>
                 ))}
             </article>

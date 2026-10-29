@@ -14,9 +14,10 @@ CREATE TABLE
         Me_ID INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
         Name VARCHAR(50) NOT NULL,
         Location VARCHAR(255) NOT NULL,
-        About TEXT,
+        Info TEXT,
         Github VARCHAR(255),
         Linkedin VARCHAR(255)
+        Email VARCHAR(255) UNIQUE
     );
 
 CREATE TABLE

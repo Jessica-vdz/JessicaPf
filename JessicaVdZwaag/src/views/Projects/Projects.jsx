@@ -76,7 +76,7 @@ export function Projects() {
                     <div className={styles.LinksContainer}>
                         <figure className={styles.ProjectImgContainer}>
                             <img
-                                src={`http://localhost${loadedProject.ProjectImg}`}
+                                src={loadedProject.ProjectImg}
                                 alt={loadedProject.Name}
                                 className={styles.ProjectImg}
                             />

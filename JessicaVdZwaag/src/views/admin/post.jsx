@@ -28,7 +28,7 @@ export function ProjectAdd() {
         formData.append("projectImg", projectImg);
 
         try {
-            const response = await fetch("http://localhost/api/post.php", {
+            const response = await fetch("/php/api/post.php", {
                 method: "POST",
                 credentials: "include",
                 body: formData
@@ -100,7 +100,7 @@ export function BookAdd() {
     const [categoryId, setCategoryId] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost/api/loadCategories.php")
+        fetch("/php/api/loadCategories.php")
             .then(res => res.json())
             .then(data => {
                 setCategoryList(data)
@@ -119,7 +119,7 @@ export function BookAdd() {
         formData.append("categoryId", categoryId);
 
         try {
-            const response = await fetch("http://localhost/api/post.php", {
+            const response = await fetch("/php/api/post.php", {
                 method: "POST",
                 credentials: "include",
                 body: formData
@@ -191,7 +191,7 @@ export function MeAdd() {
         formData.append("location", location);
 
         try {
-            const response = await fetch("http://localhost/api/post.php", {
+            const response = await fetch("/php/api/post.php", {
                 method: "POST",
                 credentials: "include",
                 body: formData
@@ -214,8 +214,8 @@ export function MeAdd() {
             <form onSubmit={handleClick}>
                 <label>
                     <h4>Naam</h4>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                    <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} />
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="naam"/>
+                    <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="locatie"/>
                 </label>
                 <label>
                     <h4>Info</h4>
@@ -223,9 +223,9 @@ export function MeAdd() {
                 </label>
                 <label>
                     <h4>Contact</h4>
-                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    <input type="text" value={github} onChange={(e) => setGithub(e.target.value)} />
-                    <input type="text" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} />
+                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email"/>
+                    <input type="text" value={github} onChange={(e) => setGithub(e.target.value)} placeholder="github"/>
+                    <input type="text" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} placeholder="linkedin"/>
                 </label>
                 label
                 <button type="submit">Toevoegen</button>

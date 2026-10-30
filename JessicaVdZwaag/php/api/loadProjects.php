@@ -1,20 +1,24 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Content-Type: application/json");
 
 include "../index.php";
 
 $result = $conn->query("SELECT * FROM Projects");
 
-$project = [];
-
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $project[] = $row;
-    }
+if (!$result) {
+    http_response_code(500);
+    echo json_encode([
+        "success" => false,
+        "message" => $conn->error
+    ]);
+    exit;
 }
 
-echo json_encode($project);
+$projects = [];
+
+while ($row = $result->fetch_assoc()) {
+    $projects[] = $row;
+}
+
+echo json_encode($projects);
 ?>

@@ -28,12 +28,14 @@ export function AboutMe() {
                             <h3 className={styles.AboutHeaderSub}>{item.Location}</h3>
                         </div>
                         <div className={styles.AboutInfo}>
-                            <p>{item.About}</p>
+                            <p>{item.Info}</p>
                         </div>
                         <div>
                             <h3 className={styles.AboutHeaderSub}>Contact </h3>
                             <div className={styles.AboutInfo}>
-                                <p>Email: Jessicavdz03@gmail.com</p>
+                                <a href={item.Email} target="_blank">{item.Email}</a>
+                                <a href={item.Github} target="_blank">{item.Github}</a>
+                                <a href={item.Linkedin} target="_blank">{item.Linkedin}</a>
                             </div>
                         </div>
                         <div className={styles.AboutLinks}>

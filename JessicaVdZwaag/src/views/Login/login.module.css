@@ -1,3 +1,32 @@
-h4 {
-    color: #975b5b;
+.loginSection {
+    width: 80vw;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #FCF2E5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.loginForm {
+    padding: .5rem;
+    background-color: #524646;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+
+}
+
+.loginInput {
+    width: 100%;
+
+    font-size: 2rem;
+}
+
+.login h4 {
+    font-size: 3rem;
+    color: #FCF2E5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

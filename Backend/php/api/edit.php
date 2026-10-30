@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Origin: https://jessicavanderzwaag.nl");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
@@ -49,7 +49,7 @@ switch ($data["action"]) {
         $project = $result->fetch_assoc();
         $stmt->close();
 
-        $projectImg = $project["ProjectImg"];
+        $projectImg = "/php/api/projects/" . $fileName;
 
         if (isset($_FILES["projectImg"])) {
             $img = $_FILES["projectImg"];
@@ -95,6 +95,55 @@ switch ($data["action"]) {
         }
 
         $stmt->close();
+        break;
+
+    case "book":
+        $id = $data["id"];
+        
+        $title = $data["title"];
+        $author = $data["author"];
+        $description = $data["description"];
+        $category_ID = $data["category_ID"];
+
+        $stmt = $conn->prepare("UPDATE Books SET Title =?, Author =?, Description = ?, Category_ID = ? WHERE Books_ID = ?");
+        $stmt->bind_param("sssii", $title, $author, $description, $category_ID, $id);
+
+        if ($stmt->execute()) {
+            echo json_encode([
+                "success" => true,
+                "message" => "boeken geupdate"
+            ]);
+        } else {
+            echo json_encode([
+                "success" => false,
+                "message" => "iets ging mis "
+            ]);
+        }
+        break;
+
+    case "me":
+        $id = $data["id"];
+        $name = $data["Name"];
+        $location = $data["Location"];
+        $info = $data["Info"];
+        $github = $data["GitHub"];
+        $linkedin = $data["Linkedin"];
+        $email = $data["email"];
+
+        $stmt = $conn->prepare("UPDATE Me SET Name = ?, Location = ?, Info = ?, Github = ?, Linkedin = ?, Email = ? WHERE Me_ID =?");
+        $stmt->bind_param("ssssssi", $name, $location, $info, $github, $linkedin, $email, $id);
+
+        if ($stmt->execute()) {
+            echo json_encode([
+                "success" => true,
+                "message" => "Me changed"
+            ]);
+        } else {
+            echo json_encode([
+                "success" => false,
+                "message" => "wrong!"
+            ]);
+        }
         break;
 }
 ?>

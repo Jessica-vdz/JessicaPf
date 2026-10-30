@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Origin: https://jessicavanderzwaag.nl");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
@@ -81,8 +81,8 @@ switch ($data["action"]) {
             exit;
         }
 
-        $projectImg = "/api/projects/" . $fileName;
-
+        $projectImg = "/php/api/projects/" . $fileName;
+        
         $stmt = $conn->prepare(
             "INSERT INTO Projects
             (Name, Description, GitLink, ProjectLink, ProjectImg, ProjectLanguages)
@@ -142,7 +142,7 @@ switch ($data["action"]) {
 
     case "me":
         if (
-            !isset($data["name"], $data['location'],$data["info"], $data["email"], $data["github"], $data["linkedin"])
+            !isset($data["name"], $data['location'], $data["info"], $data["email"], $data["github"], $data["linkedin"])
         ) {
             http_response_code(400);
             echo json_encode([

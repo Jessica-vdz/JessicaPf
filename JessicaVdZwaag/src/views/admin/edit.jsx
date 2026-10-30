@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 
 export function ProjectEdit({ id }) {
-    const [projects, setProjects] = useState([]);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [gitlink, setGitlink] = useState("");
@@ -22,7 +21,6 @@ export function ProjectEdit({ id }) {
         formData.append("description", description);
         formData.append("gitlink", gitlink);
         formData.append("projectLink", projectLink);
-        formData.append("projectImg", projectImg);
         formData.append("ProjectLanguages", ProjectLanguages);
 
         if (projectImg) {
@@ -30,7 +28,7 @@ export function ProjectEdit({ id }) {
         }
 
         try {
-            const response = await fetch("http://localhost/api/edit.php", {
+            const response = await fetch("/php/api/edit.php", {
                 method: "POST",
                 credentials: "include",
                 body: formData
@@ -50,11 +48,11 @@ export function ProjectEdit({ id }) {
 
     useEffect(() => {
         const formData = new FormData();
-        
-        formData.append("action", "getProject");
+
+        formData.append("action", "project");
         formData.append("id", id);
 
-        fetch("http://localhost/api/edit.php", {
+        fetch("/php/api/edit.php", {
             method: "POST",
             credentials: "include",
             body: formData
@@ -108,6 +106,179 @@ export function ProjectEdit({ id }) {
     )
 }
 
-export function BookEdit() {
+export function BookEdit({ id }) {
+    const [title, setTitle] = useState("");
+    const [author, setAuthor] = useState("");
+    const [description, setDescription] = useState("");
+    const [category_ID, setCategory_ID] = useState("");
 
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+
+        formData.append("action", "book");
+        formData.append("id", id);
+        formData.append("title", title);
+        formData.append("author", author);
+        formData.append("description", description);
+        formData.append("category_ID", category_ID);
+
+        try {
+            const response = await fetch("/php/api/edit.php", {
+                method: "POST",
+                credentials: "include",
+                body: formData
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                console.log(data.message);
+            } else {
+                console.log(data.message)
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        const formData = new FormData();
+
+        formData.append("action", "book");
+        formData.append("id", id);
+
+        fetch("/php/api/edit.php", {
+            method: "POST",
+            credentials: "include",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+                setTitle(data.Name);
+                setAuthor(data.author);
+                setDescription(data.description);
+                setCategory_ID(data.category_ID);
+            })
+            .catch(err => console.log(err));
+    }, [id]);
+    return (
+        <section>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    <h4>Title</h4>
+                    <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+                </label>
+                <label>
+                    <h4>Auteur</h4>
+                    <textarea value={author} onChange={(e) => setAuthor(e.target.value)}></textarea>
+                </label>
+                <label>
+                    <h4>Omschrijving</h4>
+                    <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+                </label>
+                <label>
+                    <h4>Category</h4>
+                    <input type="number" value={category_ID} onChange={(e) => setCategory_ID(e.target.value)} />
+                </label>
+                <button type="submit">Edit</button>
+            </form>
+        </section>
+    )
+}
+
+export function MeEdit({ id }) {
+    const [name, setName] = useState("");
+    const [location, setLocation] = useState("");
+    const [info, setInfo] = useState("");
+    const [github, setGithub] = useState("");
+    const [linkedin, setLinkedin] = useState("");
+    const [email, setEmail] = useState("");
+
+    const formData = new FormData();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        formData.append("action", "me");
+        formData.append("id", id);
+        formData.append("Name", name);
+        formData.append("Location", location);
+        formData.append("Info", info);
+        formData.append("GitHub", github);
+        formData.append("Linkedin", linkedin);
+        formData.append("email", email);
+        try {
+            const response = await fetch("/php/api/edit.php", {
+                method: "POST",
+                credentials: "include",
+                body: formData
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                console.log(data.message);
+            } else {
+                console.log(data.message)
+            }
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        const formData = new FormData();
+
+        formData.append("action", "me");
+        formData.append("id", id);
+
+        fetch("/php/api/edit.php", {
+            method: "POST",
+            credentials: "include",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+                setName(data.Name);
+                setLocation(data.location);
+                setInfo(data.info);
+                setGithub(data.github);
+                setLinkedin(data.linkedin);
+                setEmail(data.email);
+            })
+            .catch(err => console.log(err));
+    }, [id]);
+    return (
+        <section>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    <h4>Naam</h4>
+                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                </label>
+                <label>
+                    <h4>locatie</h4>
+                    <textarea value={location} onChange={(e) => setLocation(e.target.value)}></textarea>
+                </label>
+                <label>
+                    <h4>Omschrijving</h4>
+                    <input type="text" value={info} onChange={(e) => setInfo(e.target.value)} />
+                </label>
+                <label>
+                    <h4>github</h4>
+                    <input type="text" value={github} onChange={(e) => setGithub(e.target.value)} />
+                </label>
+                <label>
+                    <h4>Linkedin</h4>
+                    <input type="text" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} />
+                </label>
+                <label>
+                    <h4>Email</h4>
+                    <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+                </label>
+                <button type="submit">Edit</button>
+            </form>
+        </section>
+    )
 }

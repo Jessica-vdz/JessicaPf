@@ -16,7 +16,7 @@ export function Login() {
         setMessage("");
 
         try {
-            const response = await fetch("http://localhost/api/login.php", {
+            const response = await fetch("/php/api/login.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",
@@ -38,15 +38,15 @@ export function Login() {
         setLoading(false);
     }
     return (
-        <section>
-            <form onSubmit={handleClick}>
-                <label>
+        <section className={styles.loginSection}>
+            <form onSubmit={handleClick} className={styles.loginForm}>
+                <label className={styles.login}>
                     <h4>GebruikersNaam</h4>
-                    <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} />
+                    <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} className={styles.loginInput}/>
                 </label>
-                <label>
+                <label className={styles.login}>
                     <h4>Wachtwoord</h4>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className={styles.loginInput} />
                 </label>
                 <button disabled={loading} type="submit">{loading ? "Bezig ..." : "login"}</button>
             </form>

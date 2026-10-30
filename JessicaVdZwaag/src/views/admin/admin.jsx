@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import styles from "./admin.module.css"
 import { BookAdd, MeAdd, ProjectAdd } from "./post";
-import { ProjectEdit } from "./edit";
+import { BookEdit, MeEdit, ProjectEdit } from "./edit";
 
 export function Admin() {
     const [status, setStatus] = useState("loading");
@@ -16,7 +16,7 @@ export function Admin() {
     const [id, setId] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost/api/auth.php", {
+        fetch("/php/api/auth.php", {
             credentials: "include"
         })
             .then(async (response) => {
@@ -38,7 +38,7 @@ export function Admin() {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost/api/loadProjects.php")
+        fetch("/php/api/loadProjects.php")
             .then(res => res.json())
             .then(data => {
                 setProjects(data);
@@ -46,7 +46,7 @@ export function Admin() {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost/api/loadBooks.php")
+        fetch("/php/api/loadBooks.php")
             .then(res => res.json())
             .then(data => {
                 setBooks(data);
@@ -54,7 +54,7 @@ export function Admin() {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost/api/loadMe.php")
+        fetch("/php/api/loadMe.php")
             .then(res => res.json())
             .then(data => {
                 setMe(data);
@@ -75,17 +75,16 @@ export function Admin() {
 
     }
 
-
-    async function handleDelte(value, action) {
+    async function handleDelete(value, action) {
         setDeleteItem(value)
         setCategory(action);
 
         const formData = new FormData();
 
-        formData.append("category", category);
-        formData.append("deleteItem", deleteItem)
+        formData.append("category", action);
+        formData.append("deleteItem", value);
         try {
-            const response = await fetch("http://localhost/api/delete.php", {
+            const response = await fetch("/php/api/delete.php", {
                 method: "POST",
                 credentials: "include",
                 body: formData
@@ -114,7 +113,7 @@ export function Admin() {
                         <div className={styles.itemHeader}>
                             <h3>{item.Name}</h3>
                         </div>
-                        <button onClick={(e) => handleDelte(item.Project_ID, "projects")}>Verwijderen</button>
+                        <button onClick={(e) => handleDelete(item.Project_ID, "projects")}>Verwijderen</button>
                         <button onClick={(e) => handleEdit(item.Project_ID, "projectEdit")}>Edit</button>
 
                     </div>
@@ -126,17 +125,20 @@ export function Admin() {
                     <h2>Book</h2>
                     <button onClick={(e) => handleClick("book")}>Toevoegen</button>
                 </div>
-                {books.map((item) => (
-                    <div key={item.Books_ID}>
-                        <div className={styles.itemHeader}>
-                            <h3>{item.Title}</h3>
+
+                <div>
+                    {books.map((item) => (
+                        <div key={item.Books_ID}>
+                            <div className={styles.itemHeader}>
+                                <h3>{item.Title}</h3>
+                            </div>
+                            <button onClick={(e) => handleDelete(item.Books_ID, "book")}>Verwijderen</button>
+                            <button onClick={(e) => handleEdit(item.Books_ID, "BookEdit")}>Edit</button>
+
                         </div>
-                        <div>
-                            <button onClick={(e) => handleDelte(item.Books_ID, "books")}>Verwijderen</button>
-                            <button onClick={(e) => handleEdit(item.Books_ID, "books")}>Edit</button>
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
+
             </article>
 
             <article>
@@ -150,8 +152,8 @@ export function Admin() {
                             <h3>{item.Name}</h3>
                         </div>
                         <div>
-                            <button onClick={(e) => handleDelte(item.Me_ID, "me")}>Verwijderen</button>
-                            <button onClick={(e) => handleEdit(item.Me_ID, "me")}>Edit</button>
+                            <button onClick={(e) => handleDelete(item.Me_ID, "me")}>Verwijderen</button>
+                            <button onClick={(e) => handleEdit(item.Me_ID, "meEdit")}>Edit</button>
 
                         </div>
 
@@ -161,8 +163,12 @@ export function Admin() {
             {activeForm === "project" && <ProjectAdd />}
             {activeForm === "book" && <BookAdd />}
             {activeForm === "me" && <MeAdd />}
-            
-            {activeForm === "projectEdit" && <ProjectEdit id={id}/>}
+
+            {activeForm === "projectEdit" && <ProjectEdit id={id} />}
+            {activeForm === "BookEdit" && <BookEdit id={id} />}
+            {activeForm === "meEdit" && <MeEdit id={id} />}
+
+
         </section>
     );
 }
